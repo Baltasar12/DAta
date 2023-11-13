@@ -1,0 +1,23 @@
+{
+  "name": "data",
+  "version": "1.0.0",
+  "description": "Ver estadisticas de los usuarios morosos",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baltasar12/DAta.git"
+  },
+  "author": "data",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Baltasar12/DAta/issues"
+  },
+  "homepage": "https://github.com/Baltasar12/DAta#readme",
+  "devDependencies": {
+    "electron": "^27.0.4"
+  }
+}
