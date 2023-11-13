@@ -1,4 +1,5 @@
 const { app, BrowserWindow, screen } = require('electron');
+const path = require('node:path')
 let mainWindow;
 
 app.whenReady().then(() => {
@@ -9,6 +10,9 @@ app.whenReady().then(() => {
     height: height,
     maxWidth: width,
     maxHeight: height,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
   });
 
   mainWindow.loadFile('index.html');

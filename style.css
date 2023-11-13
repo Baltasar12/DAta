@@ -362,3 +362,22 @@ select {
     font-size: 14px;
   }
   
+
+  @media (max-width: 767px) {
+    /* Estilos para dispositivos pequeños (móviles) */
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Estilos para tabletas y dispositivos medianos */
+}
+
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+    /* Estilos para dispositivos grandes (laptops y pantallas de escritorio) */
+}
+
+
+@media (min-width: 1280px) {
+    /* Estilos para pantallas extra grandes */
+}
