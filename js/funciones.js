@@ -332,30 +332,77 @@ if (obsVigBA) {
 
 
 var juiciosTable = document.getElementById('juiciosTable');
-// Mostrar datos en el DOM
-function mostrarDatos() {
-    var objeto = JSON.parse(jsonData)
-    // Juicios Comerciales
-    var juiciosComerciales = objeto.datosConsultado.find(item => item.id === "juiciosComerciales");
+var chequesTable = document.getElementById('chequesTable');
 
-    console.log(juiciosComerciales)
+// Mostrar datos en el DOM
+document.addEventListener('DOMContentLoaded', function () {
+    mostrarDatos();
+    actualizarInfoUsuario();
+});
+
+
+function actualizarInfoUsuario() {
+    // Identifica los elementos en el DOM
+    var nombreElemento = document.querySelector('.info-u h1');
+    var edadElemento = document.querySelector('.info-u p.edad');
+    var sexoElemento = document.querySelector('.info-u p.sexo');
+    var poblacionElemento = document.querySelector('.info-u p.poblacion');
+  
+    // Actualiza los contenidos de los elementos
+    if (nombreElemento) {
+      nombreElemento.textContent = jsonData.datosConsultado.Nombre || 'Nombre Desconocido';
+    }
+  
+    if (edadElemento) {
+      edadElemento.textContent = 'Edad: ' + (jsonData.datosConsultado.Edad || 'Desconocida');
+    }
+  
+    if (sexoElemento) {
+      var sexoTexto = '';
+      switch (jsonData.datosConsultado.Sexo) {
+        case 'M':
+          sexoTexto = 'Masculino';
+          break;
+        case 'F':
+          sexoTexto = 'Femenino';
+          break;
+        case 'S':
+          sexoTexto = 'Sociedad';
+          break;
+        default:
+          sexoTexto = 'Desconocido';
+      }
+      sexoElemento.textContent = 'Sexo: ' + sexoTexto;
+    }
+
+    if (poblacionElemento) {
+        poblacionElemento.textContent = 'Población: ' + (jsonData.datosConsultado.Poblacion || 'Desconocida');
+      }
+  }
+function mostrarDatos() {
+    // Cheques
+    var chequesData = jsonData.consulta.find(item => item.id === 'chequesSinFondo');
+    // Juicios Comerciales
+    var juiciosComerciales = jsonData.consulta.find(item => item.id === 'juiciosComerciales');
+
+    if (chequesData) {
+        var chequesHTML = '<thead><tr><th>Rechazados</th><th>Monto</th></tr></thead><tbody>';
+        chequesData.detalles.forEach(function (detalle) {
+            chequesHTML += '<tr><td>' + detalle.titulo + '</td><td>' + detalle.monto + '</td></tr>';
+        });
+        chequesHTML += '</tbody>';
+        chequesTable.innerHTML = chequesHTML;
+    }
 
     if (juiciosComerciales) {
         var juiciosHTML = '<thead><tr><th>Periodo</th><th>Monto</th></tr></thead><tbody>';
-
         juiciosComerciales.detalles.forEach(function (detalle) {
             juiciosHTML += '<tr><td>' + detalle.titulo + '</td><td>' + detalle.valor + '</td></tr>';
         });
-
         juiciosHTML += '</tbody>';
         juiciosTable.innerHTML = juiciosHTML;
-        console.log(juiciosHTML)
     }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    mostrarDatos();
-});
 
 
 
