@@ -281,6 +281,75 @@ console.log("Documento: " + jsonData.datosConsultado.Documento);
 console.log("Edad: " + jsonData.datosConsultado.Edad);
 console.log("Estado Veraz: " + jsonData.datosConsultado.score_veraz.estado);
 console.log("Actividad Económica: " + jsonData.datosConsultado.actividad_economica.TipoIngreso);
+// Mostrar Domicilios
+console.log("Domicilios:");
+jsonData.datosConsultado.Domicilios.forEach(function(domicilio) {
+  console.log("- " + domicilio);
+});
+
+// Mostrar Teléfonos
+console.log("Teléfonos:");
+jsonData.datosConsultado.Telefonos.forEach(function(telefono) {
+  console.log("- " + telefono);
+});
+
+// Mostrar información de consultas
+console.log("Consultas:");
+jsonData.consulta.forEach(function(consulta) {
+  console.log("- " + consulta.titulo);
+  console.log("  Descripción: " + consulta.descripcion);
+  console.log("  Estado: " + consulta.estado);
+
+  // Mostrar detalles de la consulta
+  consulta.detalles.forEach(function(detalle) {
+    console.log("  " + detalle.titulo + ": " + (detalle.cantidad || detalle.valor || detalle.status || detalle.monto));
+  });
+});
+// Mostrar Observaciones vigentes en Base Abierta
+console.log("Observaciones en Base Abierta:");
+var obsVigBA = jsonData.consulta.find(function(consulta) {
+  return consulta.id === "obsVigBA";
+});
+if (obsVigBA) {
+  console.log("- Cantidad en los últimos 12 meses: " + obsVigBA.detalles[0].cantidad);
+  console.log("- Monto: " + obsVigBA.detalles[1].cantidad);
+
+  // Mostrar detalles de observaciones
+  obsVigBA.Observaciones.forEach(function(obs) {
+    console.log("  Observación: " + obs.obsDescripcion);
+    console.log("    Monto: " + obs.obsMonto);
+  });
+} else {
+  console.log("No hay observaciones en Base Abierta.");
+}
+
+
+
+var juiciosTable = document.getElementById('juiciosTable');
+// Mostrar datos en el DOM
+function mostrarDatos() {
+    var objeto = JSON.parse(jsonData)
+    // Juicios Comerciales
+    var juiciosComerciales = objeto.datosConsultado.find(item => item.id === "juiciosComerciales");
+
+    console.log(juiciosComerciales)
+
+    if (juiciosComerciales) {
+        var juiciosHTML = '<thead><tr><th>Periodo</th><th>Monto</th></tr></thead><tbody>';
+
+        juiciosComerciales.detalles.forEach(function (detalle) {
+            juiciosHTML += '<tr><td>' + detalle.titulo + '</td><td>' + detalle.valor + '</td></tr>';
+        });
+
+        juiciosHTML += '</tbody>';
+        juiciosTable.innerHTML = juiciosHTML;
+        console.log(juiciosHTML)
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    mostrarDatos();
+});
 
 
 
@@ -289,7 +358,8 @@ console.log("Actividad Económica: " + jsonData.datosConsultado.actividad_econom
 
 
 
- 
+
+
  /*Dropdown Menu*/
  $('.dropdown').click(function () {
     $(this).attr('tabindex', 1).focus();
@@ -420,3 +490,5 @@ $(document).ready(function () {
             $modal_container.removeClass('show');
         });
     });
+
+
