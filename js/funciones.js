@@ -1,3 +1,295 @@
+var jsonData = {
+        "status": "HABEAS_DATA\/IDENTIDAD\/APROBAR",
+        "message": "explicacion",
+        "datosConsultado": {
+          "Documento": 25501110,
+          "Nombre": "OCHOA, LUIS HORACIO",
+          "Edad": 0,
+          "score_veraz": {
+            "valor": 1,
+            "estado": "malo"
+          },
+          "income_predictor": "-",
+          "CMI": 0,
+          "actividad_economica": {
+            "TipoIngreso": "Rel. Dependencia - SIPA",
+            "tipo_actividad": "",
+            "antiguedad_laboral": "2 a 5 a\u00f1os",
+            "cuit_empleador": "30543740876"
+          },
+          "Poblacion": "ok",
+          "Domicilios": [
+            "URQUIZA-267- _ -4200-SANTIAGO DEL ESTERO ",
+            " 262-2734- _ -4200-SANTIAGO DEL ESTERO ",
+            " PJE 262-2734- _ -4200-SANTIAGO DEL ESTERO ",
+            " INDEPENDENCIA-1081- _ -4200-SANTIAGO DEL ESTERO"
+          ],
+          "Telefonos": [
+            "(0385)-422-1902 ",
+            " 003850004221902 ",
+            " 4167343 ",
+            " 03854317654"
+          ]
+        },
+        "consulta": [
+          {
+            "id": "juiciosComerciales",
+            "titulo": "Juicios comerciales",
+            "descripcion": "Son los juicios comerciales que tiene el consultado en los ultimos meses",
+            "estado": "bueno",
+            "detalles": [
+              {
+                "titulo": "Ultimos 12 meses",
+                "valor": 0
+              },
+              {
+                "titulo": "Ultimos 24 meses",
+                "valor": 0
+              },
+              {
+                "titulo": "Ultimos 60 meses",
+                "valor": 0
+              }
+            ]
+          },
+          {
+            "id": "chequesSinFondo",
+            "titulo": "Cheques sin fondo",
+            "descripcion": "son los cheques sin fondo que pertenecen al consultado",
+            "estado": "bueno",
+            "detalles": [
+              {
+                "titulo": "Ultimos 3 meses",
+                "cantidad": 0,
+                "monto": 0
+              },
+              {
+                "titulo": "Ultimos 6 meses",
+                "cantidad": 0,
+                "monto": 0
+              },
+              {
+                "titulo": "Ultimos 12 meses",
+                "cantidad": 0,
+                "monto": 0
+              },
+              {
+                "titulo": "Ultimos 24 meses",
+                "cantidad": 0,
+                "monto": 0
+              }
+            ]
+          },
+          {
+            "id": "chequesSinFondoNoPagados",
+            "titulo": "Cheques sin fondo no pagados",
+            "descripcion": "son los cheques sin fondo que no se pagaron que pertenecen al consultado",
+            "estado": "bueno",
+            "detalles": [
+              {
+                "titulo": "Ultimos 3 meses",
+                "cantidad": 0,
+                "monto": 0
+              },
+              {
+                "titulo": "Ultimos 6 meses",
+                "cantidad": 0,
+                "monto": 0
+              },
+              {
+                "titulo": "Ultimos 12 meses",
+                "cantidad": 0,
+                "monto": 0
+              },
+              {
+                "titulo": "Ultimos 24 meses",
+                "cantidad": 0,
+                "monto": 0
+              }
+            ]
+          },
+          {
+            "id": "cantidadComQui",
+            "titulo": "Cantidad de Concursos o Quiebras",
+            "descripcion": "Cantidad de concursos o quiebras del consultado en el ultimo tiempo",
+            "estado": "bueno",
+            "detalles": [
+              {
+                "titulo": "Ultimos 12 meses",
+                "cantidad": 0
+              },
+              {
+                "titulo": "Ultimos 24 meses",
+                "cantidad": 0
+              },
+              {
+                "titulo": "Ultimos 60 meses",
+                "cantidad": 0
+              }
+            ]
+          },
+          {
+            "id": "cantidadCon",
+            "titulo": "Consultas Financieras y no financieras",
+            "descripcion": "Cantidad de consultas Financieras y no financieras",
+            "estado": "bueno",
+            "detalles": [
+              {
+                "titulo": "ultimos mes",
+                "cantidad": 0
+              },
+              {
+                "titulo": "ultimos 3 meses",
+                "cantidad": 0
+              }
+            ]
+          },
+          {
+            "id": "statusBcra",
+            "titulo": "Peor estado en el BCRA",
+            "descripcion": "Peor status en el BCRA en los siguientes plazos",
+            "estado": "malo",
+            "detalles": [
+              {
+                "titulo": "Actual",
+                "status": "5"
+              },
+              {
+                "titulo": "ultimos 6 meses",
+                "status": "5"
+              },
+              {
+                "titulo": "de 7 a 12 meses",
+                "status": ""
+              },
+              {
+                "titulo": "de 13 a 24 meses",
+                "status": ""
+              },
+              {
+                "titulo": "Total de deuda",
+                "monto": 49000
+              }
+            ]
+          },
+          {
+            "id": "statusBureau",
+            "titulo": "Status en Bureau",
+            "descripcion": "Situacion del consultado en bureau",
+            "estado": "bueno",
+            "detalles": [
+              {
+                "titulo": "Actual",
+                "status": "-"
+              }
+            ]
+          },
+          {
+            "id": "cantEntInfo",
+            "titulo": "Entidades que informan",
+            "descripcion": "Cantidad y montos de entidades que informaron del consultado",
+            "estado": "malo",
+            "detalles": [
+              {
+                "titulo": "Situacion 1",
+                "cantidad": 1,
+                "monto": 43000
+              },
+              {
+                "titulo": "Situacion 2",
+                "cantidad": 0,
+                "monto": 0
+              },
+              {
+                "titulo": "Situacion 3",
+                "cantidad": 0,
+                "monto": 0
+              },
+              {
+                "titulo": "Situacion 4",
+                "cantidad": 0,
+                "monto": 0
+              },
+              {
+                "titulo": "Situacion 5",
+                "cantidad": 1,
+                "monto": 6000
+              }
+            ]
+          },
+          {
+            "id": "obsVigBA",
+            "titulo": "Observaciones vigentes en Base Abierta",
+            "descripcion": "Observaciones y montos en Base Abierta",
+            "estado": "bueno",
+            "detalles": [
+              {
+                "titulo": "Cantidad en los ultimos 12 meses",
+                "cantidad": 0
+              },
+              {
+                "titulo": "Monto",
+                "cantidad": 0
+              }
+            ],
+            "Observaciones": [
+              {
+                "obsAdhRubro": "S",
+                "obsAdhSubrubro": "OT",
+                "obsAdherente": "C26680",
+                "obsNombreAdh": "PEDIDOSYA S.A.",
+                "obsMonto": 8836,
+                "obsCodigo": "ISI",
+                "obsGrupo": 3,
+                "obsEstado": "VIG",
+                "obsEstadoDesc": "VIGENTE",
+                "obsFechaEstado": null,
+                "obsDescripcion": "NUESTRO ADHERENTE PEDIDOSYA S.A. INFORMA EL 20200909, SITUACION IRREGULAR DEL RUBRADO. OPERACION FACTURA IMPAGA, C\/PRENDA TITULAR OP: 8000148983 MONTO: 8836.0",
+                "obsFechaHasta": "24\/06\/2024",
+                "obsExpediente": "PUBLICO",
+                "obsFechaAlta": "25\/06\/2019",
+                "obsCampo1": "C266800000SR",
+                "obsDuracionMeses": 0,
+                "obsEstadoFhHabilitado": null,
+                "obsRecepcionEnVerazFh": null
+              }
+            ]
+          },
+          {
+            "id": "obsVigBC",
+            "titulo": "Observaciones vigentes en Banco Central",
+            "descripcion": "Observaciones y montos en Banco Central",
+            "estado": "bueno",
+            "detalles": [
+              {
+                "titulo": "Cantidad en los ultimos 12 meses",
+                "cantidad": 0
+              },
+              {
+                "titulo": "Monto",
+                "cantidad": 0
+              }
+            ],
+            "Observaciones": "-"
+          }
+        ]
+};
+ 
+// Mostrar algunos datos en la consola
+console.log("Nombre: " + jsonData.datosConsultado.Nombre);
+console.log("Documento: " + jsonData.datosConsultado.Documento);
+console.log("Edad: " + jsonData.datosConsultado.Edad);
+console.log("Estado Veraz: " + jsonData.datosConsultado.score_veraz.estado);
+console.log("Actividad Económica: " + jsonData.datosConsultado.actividad_economica.TipoIngreso);
+
+
+
+
+
+
+
+
+ 
  /*Dropdown Menu*/
  $('.dropdown').click(function () {
     $(this).attr('tabindex', 1).focus();
