@@ -147,7 +147,7 @@ a:hover, a:focus {
 .main1{
     grid-area: main1;
     width: 90%;
-    height: 90%;
+    /*height: 90%;*/
     margin-left: 10%;
     margin-top: 5%;
     background-color: var(--azul-osc);
