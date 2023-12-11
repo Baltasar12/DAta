@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Baltasar12/DAta#readme",
   "devDependencies": {
     "electron": "^27.0.4"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
   }
 }

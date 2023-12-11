@@ -33,8 +33,88 @@ body{
     background-color: var(--gris-n);
 }
 
+.ctnSemaforoEstado{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
 
+.ctnSelectorVariablesSemaforo{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-left: 1rem;
+    width: 80%;
+    max-width: 80%;
+}
 
+.ctnVariablesElegidas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tituloEstadoSemaforo{
+    width: 20%;
+    max-width: 20%;
+}
+
+.ctnVariableElegida{
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.textVariableElegida{
+    width: 80%;
+    max-width: 80%;
+    font-size: 1rem;
+}
+
+.BtnEliminarVariable{
+    width: 20%;
+    max-width: 20%;
+    border: none;
+    background-color: red;
+    color: white;
+    height: 100%;
+    padding: 0.5rem;
+
+}
+
+.ctnGeneralEstado{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+.ctnInputVertical{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 32%;
+    max-width: 32%;
+}
+
+.textoScore{
+    width: 32%;
+    max-width: 32%;
+}
+
+.ctnGeneralPoblacion{
+    width: 100%;
+}
 nav {
     position: fixed;
     top: 0;

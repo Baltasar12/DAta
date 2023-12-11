@@ -1,3 +1,9 @@
+const $ = require('jquery');
+const { ipcRenderer } = require('electron');
+let credenciales = null;
+let productData = null;
+let semaforo = null;
+
 var jsonData = {
         "status": "HABEAS_DATA\/IDENTIDAD\/APROBAR",
         "message": "explicacion",
@@ -489,6 +495,88 @@ $(document).ready(function () {
         $close.click(function () {
             $modal_container.removeClass('show');
         });
+
+        $('#submitBtn').click(async (event) => {
+          event.preventDefault();
+          await ConsultaVeraz();
+      })
+
+      async function ConsultaVeraz() {
+          const dni = $('#numeroInput').val();
+          const sexo = $('#sexoInput').val();
+          const data = {
+                  primaryConsumer: {
+                      variablesDeEntrada: {
+                          documento: dni,
+                          nombre: '',
+                          sexo: sexo,
+                      },
+                      personalInformation: {
+                          documento: dni,
+                          nombre: '',
+                          sexo: sexo,
+                      },
+                  },
+              }
+          ipcRenderer.send('solicitarConfig');
+          waitForValue('credenciales').then((valor) => {
+              credenciales = valor;
+              console.log(credenciales);
+          });
+          waitForValue('productData').then((valor) => {
+              productData = valor;
+              console.log(productData);
+          });
+          waitForValue('semaforo').then((valor) => {
+              semaforo = valor;
+              console.log(semaforo);
+          });
+          const respuesta = FetchConsultaVeraz(data, semaforo, credenciales, productData);
+          console.log(respuesta);
+      }
+
+      async function FetchConsultaVeraz(datosConsultado, semaforo, credenciales, productData) {
+          try {
+              const response = await $.ajax({
+                  url: 'http://localhost/api-consultas-veraz/endpoint/consulta.php',
+                  type: 'POST',
+                  data: {
+                      datosConsultado: datosConsultado,
+                      semaforo: semaforo,
+                      credenciales: credenciales,
+                      productData: productData
+                  }
+              });
+
+              const json = JSON.parse(response);
+              return json;
+          } catch (error) {
+              throw new Error("Error al hacer la consulta al servidor: " + error);
+          }
+      }
+
+      const waitForValue = (nombreEvento) => {
+          return new Promise((resolve) => {
+              ipcRenderer.on(nombreEvento, (event, value) => {
+                  resolve(value);
+              });
+          });
+      };
+
+      waitForValue('credenciales').then((valor) => {
+          credenciales = valor;
+          console.log(credenciales);
+      });
+
+      waitForValue('productData').then((valor) => {
+          productData = valor;
+          console.log(productData);
+      });
+
+      waitForValue('semaforo').then((valor) => {
+          semaforo = valor;
+          console.log(semaforo);
+      });
     });
 
 
