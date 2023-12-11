@@ -23,7 +23,7 @@
 
       <section class="section-main main1" >
         <form action="" style="display: flex;  flex-direction: column;" class="styled-form" id="formVariables">
-            
+            <h2>Configuracion de producto: </h2>
             <div class="inputs">
                 <label for="sector" style="margin-bottom: 10px;"><h1 style="margin: 0;">Sector:</h1></label>
                 <input type="text" name="sector" id="" class="ipTxt">
@@ -75,7 +75,7 @@
                 <input type="text" name="model" id="" class="ipTxt">
             </div>
             
-
+            <h2>Credenciales de servicio: </h2>
             <div class="inputs">
                 <label for="clientid" style="margin-bottom: 10px;"><h1 style="margin: 0;">ClientID:</h1></label>
                 <input type="text" name="clientId" id="" class="ipTxt">
@@ -84,6 +84,240 @@
             <div class="inputs">
                 <label for="clientsecret" style="margin-bottom: 10px;"><h1 style="margin: 0;">ClientSecret:</h1></label>
                 <input type="text" name="clientSecret" id="" class="ipTxt">
+            </div>
+            <h2>Variables de evaluacion:</h2>
+            <div class="ctnGeneralSemaforo" id="peor_status_bcra_actual">
+                <h4>Situacion BCRA</h4>
+                <div class="ctnSemaforoEstado" seccion="bueno">
+                    <p class="tituloEstadoSemaforo">bueno</p>
+                    <div class="ctnSelectorVariablesSemaforo">
+                        <div id="ctnVariablesPeorStatusBcraBueno" class="ctnVariablesElegidas">
+    
+                        </div>
+                        <select name="selectPeorStatusBcraBueno" id="selectPeorStatusBcraBueno">
+                            <option value="-1"> -- Selecciona uno -- </option>
+                            <option value="-"> Sin informacion </option>
+                            <option value="0"> Standard </option>
+                            <option value="1"> Cumplimiento Normal. Atraso de hasta 29 dias. </option>
+                            <option value="2"> Cumplimiento inadecuado. Atraso entre 30 y 89 dias. </option>
+                            <option value="3"> Cumplimiento deficiente. Atraso entre 90 y 179 dias. </option>
+                            <option value="4"> De dificil recuperacion. Atraso entre 180 y 359 dias. </option>
+                            <option value="5"> Irrecuperable. Atraso mas de 360 dias. </option>
+                            <option value="6"> Irrecuperable por disposicion tecnica. Atraso mas de 360 dias. </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="ctnSemaforoEstado" seccion="revisar">
+                    <p class="tituloEstadoSemaforo">revisar</p>
+                    <div class="ctnSelectorVariablesSemaforo" >
+                        <div id="ctnVariablesPeorStatusBcraBueno" class="ctnVariablesElegidas">
+    
+                        </div>
+                        <select name="selectPeorStatusBcraBueno" id="selectPeorStatusBcraBueno">
+                            <option value="-1"> -- Selecciona uno -- </option>
+                            <option value="-"> Sin informacion </option>
+                            <option value="0"> Standard </option>
+                            <option value="1"> Cumplimiento Normal. Atraso de hasta 29 dias. </option>
+                            <option value="2"> Cumplimiento inadecuado. Atraso entre 30 y 89 dias. </option>
+                            <option value="3"> Cumplimiento deficiente. Atraso entre 90 y 179 dias. </option>
+                            <option value="4"> De dificil recuperacion. Atraso entre 180 y 359 dias. </option>
+                            <option value="5"> Irrecuperable. Atraso mas de 360 dias. </option>
+                            <option value="6"> Irrecuperable por disposicion tecnica. Atraso mas de 360 dias. </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="ctnSemaforoEstado" seccion="malo">
+                    <p class="tituloEstadoSemaforo">malo</p>
+                    <div class="ctnSelectorVariablesSemaforo" >
+                        <div id="ctnVariablesPeorStatusBcraBueno" class="ctnVariablesElegidas">
+    
+                        </div>
+                        <select name="selectPeorStatusBcraBueno" id="selectPeorStatusBcraBueno">
+                            <option value="-1"> -- Selecciona uno -- </option>
+                            <option value="-"> Sin informacion </option>
+                            <option value="0"> Standard </option>
+                            <option value="1"> Cumplimiento Normal. Atraso de hasta 29 dias. </option>
+                            <option value="2"> Cumplimiento inadecuado. Atraso entre 30 y 89 dias. </option>
+                            <option value="3"> Cumplimiento deficiente. Atraso entre 90 y 179 dias. </option>
+                            <option value="4"> De dificil recuperacion. Atraso entre 180 y 359 dias. </option>
+                            <option value="5"> Irrecuperable. Atraso mas de 360 dias. </option>
+                            <option value="6"> Irrecuperable por disposicion tecnica. Atraso mas de 360 dias. </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ctnGeneralSemaforo" id="peor_status_bureau_actual">
+                <h4>Situacion BUREAU</h4>
+                <div class="ctnSemaforoEstado" seccion="bueno">
+                    <p class="tituloEstadoSemaforo">bueno</p>
+                    <div class="ctnSelectorVariablesSemaforo">
+                        <div id="ctnVariablesPeorStatusBcraBueno" class="ctnVariablesElegidas">
+    
+                        </div>
+                        <select name="selectPeorStatusBcraBueno" id="selectPeorStatusBcraBueno">
+                            <option value="-1"> -- Selecciona uno -- </option>
+                            <option value="-"> Sin informacion </option>
+                            <option value="0"> No hizo uso del acuerdo, tarjeta o prestamo. Demasiado nuevo para opinar. </option>
+                            <option value="S"> Saldo no significativo. </option>
+                            <option value="1"> Pago Normal. Atraso de hasta 30 dias </option>
+                            <option value="2"> Atraso entre 31 y 60 dias. </option>
+                            <option value="3"> Atraso entre 61 y 90 dias. </option>
+                            <option value="4"> Atraso entre 91 y 120 dias. </option>
+                            <option value="6"> Atraso entre de 121 y 180 dias. </option>
+                            <option value="9"> Atraso entre de 181 y 360 dias. </option>
+                            <option value="G"> Cuenta en gestion de cobranza extrajudicial. </option>
+                            <option value="J"> Juicio iniciado. </option>
+                            <option value="I"> Incobrable o irrecuperable. Atraso mayor a 360 dias. </option>
+                            <option value="R"> Cumpliendo plan de refinanciacion. </option>
+                            <option value="E"> Tarjeta extraviada o incluida en Boletin por seguridad. </option>
+                            <option value="C"> Operacion cerrada. </option>
+                            <option value="D"> Operacion cerrada por decision de la entidad. </option>
+                            <option value="L"> Denuncia de siniestro </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="ctnSemaforoEstado" seccion="revisar">
+                    <p class="tituloEstadoSemaforo">revisar</p>
+                    <div class="ctnSelectorVariablesSemaforo" >
+                        <div id="ctnVariablesPeorStatusBcraBueno" class="ctnVariablesElegidas">
+    
+                        </div>
+                        <select name="selectPeorStatusBcraBueno" id="selectPeorStatusBcraBueno">
+                            <option value="-1"> -- Selecciona uno -- </option>
+                            <option value="-"> Sin informacion </option>
+                            <option value="0"> No hizo uso del acuerdo, tarjeta o prestamo. Demasiado nuevo para opinar. </option>
+                            <option value="S"> Saldo no significativo. </option>
+                            <option value="1"> Pago Normal. Atraso de hasta 30 dias </option>
+                            <option value="2"> Atraso entre 31 y 60 dias. </option>
+                            <option value="3"> Atraso entre 61 y 90 dias. </option>
+                            <option value="4"> Atraso entre 91 y 120 dias. </option>
+                            <option value="6"> Atraso entre de 121 y 180 dias. </option>
+                            <option value="9"> Atraso entre de 181 y 360 dias. </option>
+                            <option value="G"> Cuenta en gestion de cobranza extrajudicial. </option>
+                            <option value="J"> Juicio iniciado. </option>
+                            <option value="I"> Incobrable o irrecuperable. Atraso mayor a 360 dias. </option>
+                            <option value="R"> Cumpliendo plan de refinanciacion. </option>
+                            <option value="E"> Tarjeta extraviada o incluida en Boletin por seguridad. </option>
+                            <option value="C"> Operacion cerrada. </option>
+                            <option value="D"> Operacion cerrada por decision de la entidad. </option>
+                            <option value="L"> Denuncia de siniestro </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="ctnSemaforoEstado" seccion="malo">
+                    <p class="tituloEstadoSemaforo">malo</p>
+                    <div class="ctnSelectorVariablesSemaforo" >
+                        <div id="ctnVariablesPeorStatusBcraBueno" class="ctnVariablesElegidas">
+    
+                        </div>
+                        <select name="selectPeorStatusBcraBueno" id="selectPeorStatusBcraBueno">
+                            <option value="-1"> -- Selecciona uno -- </option>
+                            <option value="-"> Sin informacion </option>
+                            <option value="0"> No hizo uso del acuerdo, tarjeta o prestamo. Demasiado nuevo para opinar. </option>
+                            <option value="S"> Saldo no significativo. </option>
+                            <option value="1"> Pago Normal. Atraso de hasta 30 dias </option>
+                            <option value="2"> Atraso entre 31 y 60 dias. </option>
+                            <option value="3"> Atraso entre 61 y 90 dias. </option>
+                            <option value="4"> Atraso entre 91 y 120 dias. </option>
+                            <option value="6"> Atraso entre de 121 y 180 dias. </option>
+                            <option value="9"> Atraso entre de 181 y 360 dias. </option>
+                            <option value="G"> Cuenta en gestion de cobranza extrajudicial. </option>
+                            <option value="J"> Juicio iniciado. </option>
+                            <option value="I"> Incobrable o irrecuperable. Atraso mayor a 360 dias. </option>
+                            <option value="R"> Cumpliendo plan de refinanciacion. </option>
+                            <option value="E"> Tarjeta extraviada o incluida en Boletin por seguridad. </option>
+                            <option value="C"> Operacion cerrada. </option>
+                            <option value="D"> Operacion cerrada por decision de la entidad. </option>
+                            <option value="L"> Denuncia de siniestro </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ctnGeneralSemaforo">
+                <h4 class="textoScore">Score veraz</h4>  
+                <div class="ctnGeneralPoblacion">
+                    <p>Poblacion: OK</p>
+                    <div class="ctnGeneralEstado">
+                        <p style="width: 33%; min-width: 33%; max-width: 33%;">Bueno</p>
+                        <div class="ctnInputVertical">
+                            <label for="">Desde</label>
+                            <input disabled type="number" name="desdeScoreBuenoOk">
+                        </div>
+                        <div class="ctnInputVertical">
+                            <label for="">Hasta</label>
+                            <input disabled value="999" type="number" name="hastaScoreBuenoOk">
+                        </div>
+                    </div>
+
+                    <div class="ctnGeneralEstado">
+                        <p style="width: 33%; min-width: 33%; max-width: 33%;">Revisar</p>
+                        <div class="ctnInputVertical">
+                            <label for="">Desde</label>
+                            <input disabled type="number" name="desdeScoreRevisarOk">
+                        </div>
+                        <div class="ctnInputVertical">
+                            <label for="">Hasta</label>
+                            <input type="number" name="hastaScoreRevisarOk">
+                        </div>
+                    </div>
+
+                    <div class="ctnGeneralEstado">
+                        <p style="width: 33%; min-width: 33%; max-width: 33%;">Malo</p>
+                        <div class="ctnInputVertical">
+                            <label for="">Desde</label>
+                            <input value="0" disabled type="number" name="desdeScoreMaloOk">
+                        </div>
+                        <div class="ctnInputVertical">
+                            <label for="">Hasta</label>
+                            <input type="number" name="hastaScoreMaloOk" min="1">
+                        </div>
+                    </div>
+                </div>  
+                
+                <div class="ctnGeneralPoblacion">
+                    <p>Poblacion: TH</p>
+                    <div class="ctnGeneralEstado">
+                        <p style="width: 33%; min-width: 33%; max-width: 33%;">Bueno</p>
+                        <div class="ctnInputVertical">
+                            <label for="">Desde</label>
+                            <input disabled type="number" name="desdeScoreBuenoTh">
+                        </div>
+                        <div class="ctnInputVertical">
+                            <label for="">Hasta</label>
+                            <input disabled value="999" type="number" name="hastaScoreBuenoTh">
+                        </div>
+                    </div>
+
+                    <div class="ctnGeneralEstado">
+                        <p style="width: 33%; min-width: 33%; max-width: 33%;">Revisar</p>
+                        <div class="ctnInputVertical">
+                            <label for="">Desde</label>
+                            <input disabled type="number" name="desdeScoreRevisarTh">
+                        </div>
+                        <div class="ctnInputVertical">
+                            <label for="">Hasta</label>
+                            <input type="number" name="hastaScoreRevisarTh">
+                        </div>
+                    </div>
+
+                    <div class="ctnGeneralEstado">
+                        <p style="width: 33%; min-width: 33%; max-width: 33%;">Malo</p>
+                        <div class="ctnInputVertical">
+                            <label for="">Desde</label>
+                            <input value="0" disabled type="number" name="desdeScoreMaloTh">
+                        </div>
+                        <div class="ctnInputVertical">
+                            <label for="">Hasta</label>
+                            <input type="number" name="hastaScoreMaloTh" min="1">
+                        </div>
+                    </div>
+                </div> 
             </div>
             
             <input type="submit" value="Aplicar" class="button-80 submit-btn" style="padding: 20px;margin-top: 1%; width: 24%;">
