@@ -185,6 +185,8 @@ a:hover, a:focus {
     grid-area: actual;
     margin-top: 4%;
     color: var(--blanco-c);
+    margin-left: -8%;
+    margin-right: 20%;
 }
 .main2{
     width: 80%;
@@ -200,7 +202,7 @@ a:hover, a:focus {
 }
 .main3{
     width: 80%;
-    height: 42%;
+    height: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -224,6 +226,7 @@ a:hover, a:focus {
     grid-area: cheques;
     /* width: 30%; */
     margin-left: 70%;
+    margin-right: 0%;
 }
 .main4>h1{
     color: var(--blanco-c);
@@ -233,7 +236,7 @@ a:hover, a:focus {
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     grid-area: juicios;
     /* width: 30%; */
     margin-right: 70%;
@@ -530,7 +533,7 @@ select {
     opacity: 1;
   }
   .modal3{
-    height: 50%;
+    height: 74%;
     background-color: #fff;
     width: 44%;
     max-width: 100%;

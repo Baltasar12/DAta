@@ -56,8 +56,10 @@
 
                 <div style="display: flex;flex-wrap: wrap;">
                     <p class="poblacion">Población: </p>
-                    <p style="margin-left: 40%;font-weight: bolder;font-size: 23px;" class="score">Score: </p>
+                    <p style="margin-left: 30%;font-weight: bolder;font-size: 23px;" class="score">Score: </p>
+
                     <img src="./img/controlar.png" alt="Estado" style="width: 70px;margin-left: 20%;" id="imagenEstado">
+
                 </div>
             </div>
 
@@ -70,18 +72,21 @@
         <section class="section-main main2">
             <div style="display: flex;flex-direction: row;margin-bottom: -9%;">
                 <h1 style="margin: 0;margin-bottom:10px;">Peor status BUREAU actual:</h1>
+
                 <img src="./img/cruz.png" alt="" height="40%">
+
             </div>
-            <h2 style="margin: 0;margin-bottom: 10px;">Total BUREAU: $</h2>
             <h2 style="margin: 0;">Situación: </h2>
         </section>
 
 
         <section class="section-main main3">
 
-            <div style="display: flex;flex-direction: row;margin-bottom: -11%;">
+            <div style="display: flex;flex-direction: row;margin-bottom: -9%;">
                 <h1 style="margin: 0;margin-bottom:10px;">Peor status BCRA actual:</h1> 
+
                 <img src="./img/cruz.png" alt="" height="40%">
+
             </div>
 
             <h2 style="margin: 0;margin-bottom:10px;">Total BCRA: $</h2>
@@ -99,13 +104,17 @@
 
     <section class="section-main main4">
        <a class="open2" style="color:#FFFFFF;cursor: pointer;"><h1 style="margin: 1% 1% 2% 2%;">Cheques</h1></a>
-       <img src="./img/controlar.png" alt="" style="height: 60%; margin-left: 2%;">
+
+       <img src="./img/controlar.png" alt="" style="height: 50%; margin-left: 5%;">
+
     </section>
 
 
     <section class="section-main main5">
-        <a class="open3" style="color:#FFFFFF;cursor: pointer;"><h1 style="margin: 1% 1% 2% 2%;">Juicios</h1></a>
-        <img src="./img/controlar.png" alt="" style="height: 60%; margin-left: 23%">
+        <a class="open3" style="color:#FFFFFF;cursor: pointer;"><h1 style="margin: 1% 1% 2% 23%;">Juicios y quiebras</h1></a>
+
+        <img src="./img/controlar.png" alt="" style="height: 50%; /*margin-left: 23%*/">
+
     </section>
 
 
@@ -148,6 +157,7 @@
                             <tr>
                                 <th>Rechazados</th>
                                 <th>Monto</th>
+                                <th>Cantidad</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -163,20 +173,37 @@
     <div id="modal_container3" class="modal-container3">
         <div class="modal3">
           <h1>Juicios</h1>
-            <form action="">
-                <div class="table-wrapper">
-                    <table class="fl-table" id="juiciosTable">
-                        <thead>
-                            <tr>
-                                <th>Periodo</th>
-                                <th>Monto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-        
-                        <tbody>
-                    </table>
-                </div>
+                <form action="">
+                    <div class="table-wrapper">
+                        <table class="fl-table" id="juiciosTable">
+                            <thead>
+                                <tr>
+                                    <th>Periodo</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            
+                            <tbody>
+                        </table>
+                    </div>
+                </form>
+
+           <h1>Quiebras</h1>
+                <form action="">
+                    <div class="table-wrapper">
+                        <table class="fl-table" id="quiebraTable">
+                            <thead>
+                                <tr>
+                                    <th>Periodo</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            
+                            <tbody>
+                        </table>
+                    </div>
                 </form>
           <button id="close3" class="button-80" style="margin-top: 5%;">Cerrar</button>
         </div>
