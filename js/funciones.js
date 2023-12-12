@@ -613,8 +613,14 @@ $(document).ready(function () {
   });
 
   $('#submitBtn').click(async (event) => {
+    mostrarLoader()
     event.preventDefault();
-    await ConsultaVeraz();
+    jsonData = await ConsultaVeraz();
+    mostrarDatos();
+    actualizarInfoUsuario();
+    actualizarStatusBureau();
+    actualizarStatusBCRA();
+    ocultarLoader();
   })
 
   async function ConsultaVeraz() {
@@ -649,12 +655,23 @@ $(document).ready(function () {
     });
     const respuesta = FetchConsultaVeraz(data, semaforo, credenciales, productData);
     console.log(respuesta);
+    return respuesta;
   }
+
+    // Función para mostrar el loader
+    function mostrarLoader() {
+      document.getElementById('loader').style.display = 'flex';
+    }
+  
+    // Función para ocultar el loader
+    function ocultarLoader() {
+      document.getElementById('loader').style.display = 'none';
+    }
 
   async function FetchConsultaVeraz(datosConsultado, semaforo, credenciales, productData) {
     try {
       const response = await $.ajax({
-        url: 'http://localhost/api-consultas-veraz/endpoint/consulta.php',
+        url: 'https://sistemasjeb.com.ar/api-consultas-veraz/endpoint/consulta.php',
         type: 'POST',
         data: {
           datosConsultado: datosConsultado,
