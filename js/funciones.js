@@ -339,6 +339,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mostrarDatos();
     actualizarInfoUsuario();
     actualizarStatusBureau();
+    actualizarStatusBCRA();
 });
 
 
@@ -423,18 +424,40 @@ function actualizarStatusBureau() {
   if (statusBureauTitulo) {
       statusBureauTitulo.textContent = 'Peor status BUREAU actual: ' + (statusBureauConsulta.detalles[0].status || 'Desconocido');
   }
-
   if (totalBureauElemento) {
       // Puedes actualizar el contenido con datos específicos según tu estructura de datos
       // En este ejemplo, asumimos que hay un monto en el primer detalle
       totalBureauElemento.textContent = 'Total BUREAU: $' + (statusBureauConsulta.detalles[0].monto || 'Desconocido');
   }
-
   if (situacionBureauElemento) {
       situacionBureauElemento.textContent = 'Situación: ' + (statusBureauConsulta.detalles[0].status || 'Desconocida');
   }
 }
-
+function actualizarStatusBCRA() {
+    // Identificar los elementos en el DOM para BCRA
+    var statusBCRATitulo = document.querySelector('.main3 h1');
+    var totalBCRAElemento = document.querySelector('.main3 h2:nth-child(2)');
+    var situacionBCRAElemento = document.querySelector('.main3 h2:nth-child(3)');
+  
+    // Buscar la consulta "statusBCRA" en el objeto jsonData
+    var statusBCRAConsulta = jsonData.consulta.find(item => item.id === 'statusBcra');
+  
+    // Actualizar los contenidos de los elementos para BCRA
+    if (statusBCRATitulo) {
+      statusBCRATitulo.textContent = 'Peor status BCRA actual:';
+    }
+  
+    if (totalBCRAElemento) {
+      // Puedes actualizar el contenido con datos específicos según tu estructura de datos
+      // En este ejemplo, asumimos que hay un monto en el primer detalle
+      totalBCRAElemento.textContent = 'Total BCRA: $' + (statusBCRAConsulta.detalles[0].monto || 'Desconocido');
+    }
+  
+    if (situacionBCRAElemento) {
+      situacionBCRAElemento.textContent = 'Situación: ' + (statusBCRAConsulta.detalles[0].status || 'Desconocida');
+    }
+  }
+  
 
 
 
