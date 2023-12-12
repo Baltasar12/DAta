@@ -398,12 +398,14 @@ function mostrarDatos() {
   var chequesData = jsonData.consulta.find(item => item.id === 'chequesSinFondo');
   // Juicios Comerciales
   var juiciosComerciales = jsonData.consulta.find(item => item.id === 'juiciosComerciales');
+  // Cantidad Com Qui
+  var cantidadComQuiData = jsonData.consulta.find(item => item.id === 'cantidadComQui');
 
   if (chequesData) {
-    var chequesHTML = '<thead><tr><th>Rechazados</th><th>Monto</th></tr></thead><tbody>';
+    var chequesHTML = '<thead><tr><th>Rechazados</th><th>Monto</th><th>Cantidad</th></tr></thead><tbody>';
     chequesData.detalles.forEach(function (detalle) {
-      chequesHTML += '<tr><td>' + detalle.titulo + '</td><td>' + detalle.monto + '</td></tr>';
-    });
+        chequesHTML += '<tr><td>' + detalle.titulo + '</td><td>' + detalle.monto + '</td><td>' + detalle.cantidad + '</td></tr>';
+      });
     chequesHTML += '</tbody>';
     chequesTable.innerHTML = chequesHTML;
   }
@@ -416,6 +418,15 @@ function mostrarDatos() {
     juiciosHTML += '</tbody>';
     juiciosTable.innerHTML = juiciosHTML;
   }
+
+  if (cantidadComQuiData) {
+    var cantidadComQuiHTML = '<thead><tr><th>Descripción</th><th>Cantidad</th></tr></thead><tbody>';
+    cantidadComQuiData.detalles.forEach(function (detalle) {
+      cantidadComQuiHTML += '<tr><td>' + detalle.titulo + '</td><td>' + detalle.cantidad + '</td></tr>';
+    });
+    cantidadComQuiHTML += '</tbody>';
+    quiebraTable.innerHTML = cantidadComQuiHTML;
+    }
 }
 
 // Función para actualizar la información de la sección main2

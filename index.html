@@ -105,13 +105,13 @@
     <section class="section-main main4">
        <a class="open2" style="color:#FFFFFF;cursor: pointer;"><h1 style="margin: 1% 1% 2% 2%;">Cheques</h1></a>
 
-       <img src="./img/controlar.png" alt="" style="height: 50%; /*margin-left: 2%;*/">
+       <img src="./img/controlar.png" alt="" style="height: 50%; margin-left: 5%;">
 
     </section>
 
 
     <section class="section-main main5">
-        <a class="open3" style="color:#FFFFFF;cursor: pointer;"><h1 style="margin: 1% 1% 2% 2%;">Juicios</h1></a>
+        <a class="open3" style="color:#FFFFFF;cursor: pointer;"><h1 style="margin: 1% 1% 2% 23%;">Juicios y quiebras</h1></a>
 
         <img src="./img/controlar.png" alt="" style="height: 50%; /*margin-left: 23%*/">
 
@@ -157,6 +157,7 @@
                             <tr>
                                 <th>Rechazados</th>
                                 <th>Monto</th>
+                                <th>Cantidad</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -172,20 +173,37 @@
     <div id="modal_container3" class="modal-container3">
         <div class="modal3">
           <h1>Juicios</h1>
-            <form action="">
-                <div class="table-wrapper">
-                    <table class="fl-table" id="juiciosTable">
-                        <thead>
-                            <tr>
-                                <th>Periodo</th>
-                                <th>Monto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-        
-                        <tbody>
-                    </table>
-                </div>
+                <form action="">
+                    <div class="table-wrapper">
+                        <table class="fl-table" id="juiciosTable">
+                            <thead>
+                                <tr>
+                                    <th>Periodo</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            
+                            <tbody>
+                        </table>
+                    </div>
+                </form>
+
+           <h1>Quiebras</h1>
+                <form action="">
+                    <div class="table-wrapper">
+                        <table class="fl-table" id="quiebraTable">
+                            <thead>
+                                <tr>
+                                    <th>Periodo</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            
+                            <tbody>
+                        </table>
+                    </div>
                 </form>
           <button id="close3" class="button-80" style="margin-top: 5%;">Cerrar</button>
         </div>
