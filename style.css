@@ -185,6 +185,8 @@ a:hover, a:focus {
     grid-area: actual;
     margin-top: 4%;
     color: var(--blanco-c);
+    margin-left: -8%;
+    margin-right: 20%;
 }
 .main2{
     width: 80%;
@@ -224,6 +226,7 @@ a:hover, a:focus {
     grid-area: cheques;
     /* width: 30%; */
     margin-left: 70%;
+    margin-right: 0%;
 }
 .main4>h1{
     color: var(--blanco-c);
