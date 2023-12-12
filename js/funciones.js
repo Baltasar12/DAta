@@ -446,13 +446,11 @@ function actualizarStatusBCRA() {
     if (statusBCRATitulo) {
       statusBCRATitulo.textContent = 'Peor status BCRA actual:';
     }
-  
     if (totalBCRAElemento) {
       // Puedes actualizar el contenido con datos específicos según tu estructura de datos
       // En este ejemplo, asumimos que hay un monto en el primer detalle
       totalBCRAElemento.textContent = 'Total BCRA: $' + (statusBCRAConsulta.detalles[0].monto || 'Desconocido');
     }
-  
     if (situacionBCRAElemento) {
       situacionBCRAElemento.textContent = 'Situación: ' + (statusBCRAConsulta.detalles[0].status || 'Desconocida');
     }
@@ -509,7 +507,6 @@ $open3.click(function() {
 $close3.click(function() {
     $modal_container3.removeClass('show3');
 });
-
 
 
 //PopUp dinamico de evolucion y composicion
