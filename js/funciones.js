@@ -342,32 +342,31 @@ document.addEventListener('DOMContentLoaded', function () {
   actualizarStatusBCRA();
 });
 
-function CrearTablaDinamica(nombreColumnas, datos) {
-
+function CrearTablaDinamica(nombreColumnas, nombreDatos, datos) {
+  // Crea la tabla y el encabezado
   const tabla = document.createElement('table');
   const encabezado = document.createElement('thead');
   const encabezadoFila = document.createElement('tr');
-
   nombreColumnas.forEach((titulo) => {
     const th = document.createElement('th');
     th.textContent = titulo;
     encabezadoFila.appendChild(th);
   });
-
   encabezado.appendChild(encabezadoFila);
   tabla.appendChild(encabezado);
   const cuerpoTabla = document.createElement('tbody');
-
   datos.forEach((filaDatos) => {
     const fila = document.createElement('tr');
-    nombreColumnas.forEach((columna) => {
+
+    nombreDatos.forEach((nombreDato) => {
       const celda = document.createElement('td');
-      celda.textContent = filaDatos[columna];
+      celda.textContent = filaDatos[nombreDato] || '-';
       fila.appendChild(celda);
     });
     cuerpoTabla.appendChild(fila);
   });
   tabla.appendChild(cuerpoTabla);
+  // Devuelve la tabla en lugar de agregarla al contenedor
   return tabla;
 }
 
@@ -558,50 +557,27 @@ $(document).ready(function () {
 
     // Cambiar dinámicamente la estructura de la tabla
     if (tableType === 'evolucion') {
-      // Lógica para la tabla de Evolución
-      $modalTable.html(`
-                    <thead>
-                        <tr>
-                            <th>Periodo</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Contenido de la tabla de Evolución -->
-                    </tbody>
-                `);
+      let datos = jsonData.consulta.find(function (consulta) {
+        return consulta.id === "statusBcra";
+      });
+      const tabla = CrearTablaDinamica(["Periodo", "estado"], ["titulo", "status"], datos.detalles.slice(0, -1));
+      tabla.id = 'modalTable';
+      tabla.classList.add('fl-table');
+      $('#ctn-tabla').empty();
+      $('#ctn-tabla').append(tabla);
 
       // Mostrar el contenedor de adquisiciones solo para Evolución
       $acquisitionsContainer.show();
     } else if (tableType === 'composicion') {
       // Lógica para la tabla de Composición
-      $modalTable.html(`
-                    <thead>
-                        <tr>
-                            <th>Situación</th>
-                            <th>Entidad</th>
-                            <th>Monto</th>
-                            <th>Cantidad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Contenido de la tabla de Composición -->
-                        <tr>
-                            <td>Composición 1</td>
-                            <td>Entidad 1</td>
-                            <td>Monto 1</td>
-                            <td>Cantidad 1</td>
-                        </tr>
-                        <tr>
-                            <td>Composición 2</td>
-                            <td>Entidad 2</td>
-                            <td>Monto 2</td>
-                            <td>Cantidad 2</td>
-                        </tr>
-                        <!-- Agrega más filas según sea necesario -->
-                    </tbody>
-                `);
-
+      let datos = jsonData.consulta.find(function (consulta) {
+        return consulta.id === "cantEntInfo";
+      });
+      const tabla = CrearTablaDinamica(["Periodo", "Cantidad", "Monto"], ["titulo", "cantidad", "monto"], datos.detalles);
+      tabla.id = 'modalTable';
+      tabla.classList.add('fl-table');
+      $('#ctn-tabla').empty();
+      $('#ctn-tabla').append(tabla);
       // Ocultar el contenedor de adquisiciones solo para Composición
       $acquisitionsContainer.hide();
     }
@@ -610,28 +586,32 @@ $(document).ready(function () {
     if (showChart) {
       // Lógica para el gráfico (puedes ajustar según tus datos y necesidades)
       (async function () {
-        const data = [
-          { year: 2010, count: 10 },
-          { year: 2011, count: 20 },
-          { year: 2012, count: 15 },
-          { year: 2013, count: 25 },
-          { year: 2014, count: 22 },
-          { year: 2015, count: 30 },
-          { year: 2016, count: 28 },
-        ];
+        let datos = jsonData.consulta.find(function (consulta) {
+          return consulta.id === "statusBcra";
+        });
+        const data = datos.detalles.slice(0, -1).reverse();
 
         new Chart(
           $acquisitionsCanvas[0],
           {
             type: 'line',
             data: {
-              labels: data.map(row => row.year),
+              labels: data.map(row => row.titulo),
               datasets: [
                 {
-                  label: 'Acquisitions by year',
-                  data: data.map(row => row.count)
+                  label: 'estado',
+                  data: data.map(row => row.status), // Invertir los datos del eje y
                 }
               ]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  stepSize: 1, // Establecer el tamaño del paso a 1 para valores enteros
+                  precision: 0, // No mostrar decimales en el eje y
+                }
+              }
             }
           }
         );
