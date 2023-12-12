@@ -359,7 +359,6 @@ function cambiarIconEstado() {
  $('#imgEstadoJuicios').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'juiciosComerciales' ).estado]);
  $('#imgEstadoBcra').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'statusBcra' ).estado]);
  $('#imgEstadoBureau').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'statusBureau' ).estado]);
-
 }
 
 
