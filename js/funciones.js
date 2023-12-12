@@ -338,6 +338,7 @@ var chequesTable = document.getElementById('chequesTable');
 document.addEventListener('DOMContentLoaded', function () {
     mostrarDatos();
     actualizarInfoUsuario();
+    actualizarStatusBureau();
 });
 
 
@@ -347,6 +348,7 @@ function actualizarInfoUsuario() {
     var edadElemento = document.querySelector('.info-u p.edad');
     var sexoElemento = document.querySelector('.info-u p.sexo');
     var poblacionElemento = document.querySelector('.info-u p.poblacion');
+    var scoreElemento = document.querySelector('.info-u p.score');
   
     // Actualiza los contenidos de los elementos
     if (nombreElemento) {
@@ -378,6 +380,9 @@ function actualizarInfoUsuario() {
     if (poblacionElemento) {
         poblacionElemento.textContent = 'Población: ' + (jsonData.datosConsultado.Poblacion || 'Desconocida');
       }
+    if (scoreElemento) {
+      scoreElemento.textContent = 'Score: ' + (jsonData.datosConsultado.score_veraz.valor || 'Desconocido');
+    }
   }
 function mostrarDatos() {
     // Cheques
@@ -404,7 +409,31 @@ function mostrarDatos() {
     }
 }
 
+// Función para actualizar la información de la sección main2
+function actualizarStatusBureau() {
+  // Identificar los elementos en el DOM
+  var statusBureauTitulo = document.querySelector('.main2 h1');
+  var totalBureauElemento = document.querySelector('.main2 h2:nth-child(2)');
+  var situacionBureauElemento = document.querySelector('.main2 h2:nth-child(3)');
 
+  // Buscar la consulta "statusBureau" en el objeto jsonData
+  var statusBureauConsulta = jsonData.consulta.find(item => item.id === 'statusBureau');
+
+  // Actualizar los contenidos de los elementos
+  if (statusBureauTitulo) {
+      statusBureauTitulo.textContent = 'Peor status BUREAU actual: ' + (statusBureauConsulta.detalles[0].status || 'Desconocido');
+  }
+
+  if (totalBureauElemento) {
+      // Puedes actualizar el contenido con datos específicos según tu estructura de datos
+      // En este ejemplo, asumimos que hay un monto en el primer detalle
+      totalBureauElemento.textContent = 'Total BUREAU: $' + (statusBureauConsulta.detalles[0].monto || 'Desconocido');
+  }
+
+  if (situacionBureauElemento) {
+      situacionBureauElemento.textContent = 'Situación: ' + (statusBureauConsulta.detalles[0].status || 'Desconocida');
+  }
+}
 
 
 
@@ -428,12 +457,39 @@ $('.dropdown .dropdown-menu li').click(function () {
     $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
 });
 /*End Dropdown Menu*/
-
 $('.dropdown-menu li').click(function () {
 var input = '<strong>' + $(this).parents('.dropdown').find('input').val() + '</strong>',
 msg = '<span class="msg">Hidden input value: ';
 $('.msg').html(msg + input + '</span>');
 }); 
+
+
+
+
+//PopUp Cheque
+const $open2 = $('.open2');
+const $modal_container2 = $('#modal_container2');
+const $close2 = $('#close2');
+$open2.click(function() {
+    $modal_container2.addClass('show2');
+});
+$close2.click(function() {
+    $modal_container2.removeClass('show2');
+});
+//PopUp Juicios
+const $open3 = $('.open3');
+const $modal_container3 = $('#modal_container3');
+const $close3 = $('#close3');
+$open3.click(function() {
+    $modal_container3.addClass('show3');
+});
+$close3.click(function() {
+    $modal_container3.removeClass('show3');
+});
+
+
+
+//PopUp dinamico de evolucion y composicion
 $(document).ready(function () {
         const $open = $('.open');
         const $modal_container = $('#modal_container');

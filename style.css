@@ -31,8 +31,7 @@ body{
     "nav1 nav1"
     "main1 actual"
     "main1 actual"
-    "cheques cheques"
-    "juicios juicios"
+    "cheques juicios"
     ;
     grid-template-rows: auto;
     font-family: 'Open Sans', sans-serif;
@@ -189,7 +188,7 @@ a:hover, a:focus {
 }
 .main2{
     width: 80%;
-    height: 30%;
+    height: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -201,7 +200,7 @@ a:hover, a:focus {
 }
 .main3{
     width: 80%;
-    height: 40%;
+    height: 42%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,17 +216,27 @@ a:hover, a:focus {
 
 
 .main4{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     grid-area: cheques;
-    width: 90%;
-    margin-left: 5%;
+    /* width: 30%; */
+    margin-left: 70%;
 }
 .main4>h1{
     color: var(--blanco-c);
 }
 .main5{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     grid-area: juicios;
-    width: 90%;
-    margin-left: 5%;
+    /* width: 30%; */
+    margin-right: 70%;
 }
 .main5>h1{
     color: var(--blanco-c);
@@ -461,7 +470,90 @@ select {
   }
   
 
-  @media (max-width: 767px) {
+  /*POPUP--CHEQUES*/
+  .modal-container2{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;  
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    transition: opacity 0.3s ease;
+    overflow: scroll;
+  }
+  .show2{
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .modal2{
+    height: 50%;
+    background-color: #fff;
+    width: 44%;
+    max-width: 100%;
+    padding: 45px 42px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    overflow-y: scroll;
+  }
+  .modal2 h1 {
+    margin: 0;
+  }
+  .modal2 p {
+    opacity: 0.7;
+    font-size: 14px;
+  }
+
+  /*POPUP--JUICIOS*/
+  .modal-container3{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;  
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    transition: opacity 0.3s ease;
+    overflow: scroll;
+  }
+  .show3{
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .modal3{
+    height: 50%;
+    background-color: #fff;
+    width: 44%;
+    max-width: 100%;
+    padding: 45px 42px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    overflow-y: scroll;
+  }
+  .modal3 h1 {
+    margin: 0;
+  }
+  .modal3 p {
+    opacity: 0.7;
+    font-size: 14px;
+  }
+
+
+
+
+
+
+@media (max-width: 767px) {
     /* Estilos para dispositivos pequeños (móviles) */
 }
 
