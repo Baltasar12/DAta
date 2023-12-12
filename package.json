@@ -21,6 +21,7 @@
     "electron": "^27.0.4"
   },
   "dependencies": {
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "sweetalert2": "^11.10.1"
   }
 }

@@ -1,8 +1,10 @@
 const $ = require('jquery');
 const { ipcRenderer } = require('electron');
+const Swal = require('sweetalert2');
 let credenciales = null;
 let productData = null;
 let semaforo = null;
+const imgNombre = {bueno: 'controlar.png', revisar: 'excl2.png', malo:'cruz.png'};
 
 var jsonData = {
     "status": "APROBAR",
@@ -13,7 +15,7 @@ var jsonData = {
       "Edad": 55,
       "score_veraz": {
         "valor": 901,
-        "estado": "bueno"
+        "estado": "malo"
       },
       "income_predictor": "R1",
       "CMI": 323,
@@ -319,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
   actualizarInfoUsuario();
   actualizarStatusBureau();
   actualizarStatusBCRA();
+  cambiarIconEstado();
 });
 
 function CrearTablaDinamica(nombreColumnas, nombreDatos, datos) {
@@ -349,15 +352,25 @@ function CrearTablaDinamica(nombreColumnas, nombreDatos, datos) {
   return tabla;
 }
 
+function cambiarIconEstado() {
+  const rutaImg = './img/';
+ $('#imagenEstado').attr('src', rutaImg + imgNombre[jsonData.datosConsultado.score_veraz.estado]);
+ $('#imgEstadoCheques').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'chequesSinFondo' ).estado]);
+ $('#imgEstadoJuicios').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'juiciosComerciales' ).estado]);
+ $('#imgEstadoBcra').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'statusBcra' ).estado]);
+ $('#imgEstadoBureau').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'statusBureau' ).estado]);
+
+}
+
 
 function actualizarInfoUsuario() {
   // Identifica los elementos en el DOM
+
   var nombreElemento = document.querySelector('.info-u h1');
   var edadElemento = document.querySelector('.info-u p.edad');
   var sexoElemento = document.querySelector('.info-u p.sexo');
   var poblacionElemento = document.querySelector('.info-u p.poblacion');
   var scoreElemento = document.querySelector('.info-u p.score');
-
   // Actualiza los contenidos de los elementos
   if (nombreElemento) {
     nombreElemento.textContent = jsonData.datosConsultado.Nombre || 'Nombre Desconocido';
@@ -399,7 +412,6 @@ function mostrarDatos() {
   var juiciosComerciales = jsonData.consulta.find(item => item.id === 'juiciosComerciales');
   // Cantidad Com Qui
   var cantidadComQuiData = jsonData.consulta.find(item => item.id === 'cantidadComQui');
-
   if (chequesData) {
     var chequesHTML = '<thead><tr><th>Rechazados</th><th>Monto</th><th>Cantidad</th></tr></thead><tbody>';
     chequesData.detalles.forEach(function (detalle) {
@@ -615,11 +627,22 @@ $(document).ready(function () {
   $('#submitBtn').click(async (event) => {
     mostrarLoader()
     event.preventDefault();
-    jsonData = await ConsultaVeraz();
-    mostrarDatos();
-    actualizarInfoUsuario();
-    actualizarStatusBureau();
-    actualizarStatusBCRA();
+    const respuesta = await ConsultaVeraz();
+    if (respuesta.status == 'APROBAR' || respuesta.status == 'success') {
+      jsonData = respuesta;
+      mostrarDatos();
+      actualizarInfoUsuario();
+      actualizarStatusBureau();
+      actualizarStatusBCRA();
+      cambiarIconEstado();
+      
+    }else{
+      Swal.fire({
+        title: respuesta.status,
+        text: respuesta.message,
+        icon: respuesta.status ,
+     });
+    }
     ocultarLoader();
   })
 
