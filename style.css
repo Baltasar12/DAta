@@ -295,9 +295,19 @@ a:hover, a:focus {
     box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
     -webkit-box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
     -moz-box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
-    width: 31%;
     line-height: 0%;
-    margin-left: 14%;
+    /* margin-left: 14%; */
+}
+.main8{
+    background-color: var(--azul-osc);
+    border: 1px;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
+    -webkit-box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
+    -moz-box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
+    line-height: 0%;
+    /* margin-left: 14%; */
 }
 
 
