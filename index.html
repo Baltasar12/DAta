@@ -105,7 +105,7 @@
                 <a class="open4" style="cursor: pointer;"><h1>Detalles</h1></a>
             </section>
             <section class="main7">
-                <a class="open5" style="cursor: pointer;"><h1>Observaciones</h1></a>
+                <a class="open5 btnOpenModal" idmodal="modal_containerObs" style="cursor: pointer;"><h1>Observaciones</h1></a>
             </section>
         </div>
 
@@ -124,8 +124,8 @@
     </section>
 
     <section class="main8">
-        <a class="open6" style="color:#FFFFFF;cursor: pointer;"><h1 style="text-align: center;">Consultas</h1></a>
-        <img id="imgEstadoJuicios" src="./img/controlar.png" alt="" style="height: 50%; /*margin-left: 23%*/; align-self: center;">
+        <a class="open6 btnOpenModal" idmodal="modal_containerCon" style="color:#FFFFFF;cursor: pointer;"><h1 style="text-align: center;">Consultas</h1></a>
+        <img id="imgEstadoCon" src="./img/controlar.png" alt="" style="height: 50%; /*margin-left: 23%*/; align-self: center;">
     </section>
 
 
@@ -154,7 +154,7 @@
         </div>
     </div>
 
-    <div id="modal_containerCon" class="modal-container2 ctnModal">
+    <div id="modal_containerCon" class="modal-container2 ctnModal ">
         <div class="modal">
           <h1>Consultas financieras y no financieras</h1>
             <form action="">
@@ -170,6 +170,31 @@
 
                         <tbody>
                     </table>
+                </div>
+            </form>
+          <button  class="button-80 btn-cerrar" style="margin-top: 5%;">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal_containerObs" class="modal-container2 ctnModal ">
+        <div class="modal">
+          <h1>Observaciones de Base abierta y base cerrada</h1>
+            <form action="">
+                <div class="table-wrapper" id="ctnTablaBc">
+                    <table class="fl-table">
+                        <thead>
+                            <tr>
+                                <th>Periodo</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        <tbody>
+                    </table>
+                </div>
+                <div class="table-wrapper" id="ctnTablaBa">
+
                 </div>
             </form>
           <button  class="button-80 btn-cerrar" style="margin-top: 5%;">Cerrar</button>

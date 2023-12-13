@@ -315,12 +315,43 @@ if (obsVigBA) {
 var juiciosTable = document.getElementById('juiciosTable');
 var chequesTable = document.getElementById('chequesTable');
 // Mostrar datos en el DOM
+
+function CrearTablaConsultas() {
+  let tabla = CrearTablaDinamica(["Periodo", "Cantidad"], ["titulo", "cantidad"], jsonData.consulta.find( item => item.id == 'cantidadCon').detalles);
+  tabla.classList.add('fl-table');
+  const modalContainer = $("#modal_containerCon");
+  const tableWrapperDiv = modalContainer.find(".table-wrapper");
+  tableWrapperDiv.empty();
+  tableWrapperDiv.append(tabla);
+}
+
+function CrearTablaObsBa() {
+  let tabla = CrearTablaDinamica(["Periodo", "Cantidad"], ["titulo", "cantidad"], jsonData.consulta.find( item => item.id == 'obsVigBA').detalles);
+  tabla.classList.add('fl-table');
+  const modalContainer = $("#modal_containerObs");
+  const tableWrapperDiv = modalContainer.find("#ctnTablaBa");
+  tableWrapperDiv.empty();
+  tableWrapperDiv.append(tabla);
+}
+
+function CrearTablaObsBc() {
+  let tabla = CrearTablaDinamica(["Periodo", "Cantidad"], ["titulo", "cantidad"], jsonData.consulta.find( item => item.id == 'obsVigBC').detalles);
+  tabla.classList.add('fl-table');
+  const modalContainer = $("#modal_containerObs");
+  const tableWrapperDiv = modalContainer.find("#ctnTablaBc");
+  tableWrapperDiv.empty();
+  tableWrapperDiv.append(tabla);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   mostrarDatos();
   actualizarInfoUsuario();
   actualizarStatusBureau();
   actualizarStatusBCRA();
   cambiarIconEstado();
+  CrearTablaConsultas();
+  CrearTablaObsBa();
+  CrearTablaObsBc();
 });
 
 function CrearTablaDinamica(nombreColumnas, nombreDatos, datos) {
@@ -358,6 +389,8 @@ function cambiarIconEstado() {
  $('#imgEstadoJuicios').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'juiciosComerciales' ).estado]);
  $('#imgEstadoBcra').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'statusBcra' ).estado]);
  $('#imgEstadoBureau').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'statusBureau' ).estado]);
+ $('#imgEstadoCon').attr('src', rutaImg + imgNombre[jsonData.consulta.find( item => item.id == 'cantidadCon' ).estado]);
+
 }
 
 
@@ -622,8 +655,17 @@ $(document).ready(function () {
     $modal_container.removeClass('show');
   });
 
-  $('.btn-cerrar').on('click', ()=>{
+  $('.btn-cerrar').on('click', function () {
     const ctnModal = $(this).closest('.ctnModal');
+    console.log(ctnModal);
+    ctnModal.removeClass('show2');
+  })
+
+  $('.btnOpenModal').on('click', function () {
+    console.log($(this).attr("idmodal"));
+    const ctnModal = $('#' + $(this).attr('idmodal'));
+    console.log(ctnModal);
+    ctnModal.addClass('show2');
   })
 
   $('#submitBtn').click(async (event) => {
@@ -637,6 +679,9 @@ $(document).ready(function () {
       actualizarStatusBureau();
       actualizarStatusBCRA();
       cambiarIconEstado();
+      CrearTablaConsultas();
+      CrearTablaObsBa();
+      CrearTablaObsBc();
     }else{
       Swal.fire({
         title: respuesta.status,
