@@ -321,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
   actualizarStatusBureau();
   actualizarStatusBCRA();
   cambiarIconEstado();
+  llenarFormulario();
 });
 
 function CrearTablaDinamica(nombreColumnas, nombreDatos, datos) {
@@ -410,6 +411,8 @@ function mostrarDatos() {
   var juiciosComerciales = jsonData.consulta.find(item => item.id === 'juiciosComerciales');
   // Cantidad Com Qui
   var cantidadComQuiData = jsonData.consulta.find(item => item.id === 'cantidadComQui');
+
+
   if (chequesData) {
     var chequesHTML = '<thead><tr><th>Rechazados</th><th>Monto</th><th>Cantidad</th></tr></thead><tbody>';
     chequesData.detalles.forEach(function (detalle) {
@@ -437,6 +440,60 @@ function mostrarDatos() {
     quiebraTable.innerHTML = cantidadComQuiHTML;
     }
 }
+
+// Función para llenar las secciones del formulario con la información del JSON
+function llenarFormulario() {
+    // Rellenar Income Predictor
+    var incomePredictorContent = document.getElementById("incomePredictorContent");
+    incomePredictorContent.textContent = jsonData.datosConsultado.income_predictor;
+  
+    // Rellenar CMI
+    var cmiContent = document.getElementById("cmiContent");
+    cmiContent.textContent = jsonData.datosConsultado.CMI;
+  
+    // Rellenar Actividad Económica en columnas sin estilos
+    var actividadEconomicaContent = document.getElementById("actividadEconomicaContent");
+    var actividadEconomicaList = document.createElement("ul");
+    var actividadEconomica = jsonData.datosConsultado.actividad_economica;
+
+    // Crear elementos li para cada propiedad de actividad económica
+    for (var propiedad in actividadEconomica) {
+    if (actividadEconomica.hasOwnProperty(propiedad)) {
+        var listItem = document.createElement("li");
+        listItem.textContent = propiedad + ": " + actividadEconomica[propiedad];
+        actividadEconomicaList.appendChild(listItem);
+    }
+    }
+
+    // Agregar clase para quitar estilos predeterminados
+    actividadEconomicaList.classList.add("sin-estilos");
+    actividadEconomicaContent.appendChild(actividadEconomicaList);
+    
+  
+    // Rellenar Domicilios en columnas
+  var domiciliosContent = document.getElementById("domiciliosContent");
+  var domiciliosList = document.createElement("ul");
+  jsonData.datosConsultado.Domicilios.forEach(function (domicilio) {
+    var listItem = document.createElement("li");
+    listItem.textContent = domicilio;
+    domiciliosList.appendChild(listItem);
+  });
+  domiciliosContent.appendChild(domiciliosList);
+
+    // Rellenar Teléfonos en columnas sin estilos
+    var telefonosContent = document.getElementById("telefonosContent");
+    var telefonosList = document.createElement("ul");
+    jsonData.datosConsultado.Telefonos.forEach(function (telefono) {
+    var listItem = document.createElement("li");
+    listItem.textContent = telefono;
+    telefonosList.appendChild(listItem);
+    });
+
+    // Agregar clase para quitar estilos predeterminados
+    telefonosList.classList.add("sin-estilos");
+    telefonosContent.appendChild(telefonosList);
+  }
+
 
 // Función para actualizar la información de la sección main2
 function actualizarStatusBureau() {
@@ -528,6 +585,16 @@ $open3.click(function () {
 });
 $close3.click(function () {
   $modal_container3.removeClass('show3');
+});
+//PopUp Detalles
+const $open4 = $('.open4');
+const $modal_container4 = $('#modal_container4');
+const $close4 = $('#close4');
+$open4.click(function () {
+  $modal_container4.addClass('show4');
+});
+$close4.click(function () {
+  $modal_container4.removeClass('show4');
 });
 
 
