@@ -624,7 +624,7 @@ $(document).ready(function () {
   });
 
   $('#submitBtn').click(async (event) => {
-    mostrarLoader()
+    mostrarLoader();
     event.preventDefault();
     const respuesta = await ConsultaVeraz();
     if (respuesta.status == 'APROBAR' || respuesta.status == 'success') {
@@ -634,12 +634,11 @@ $(document).ready(function () {
       actualizarStatusBureau();
       actualizarStatusBCRA();
       cambiarIconEstado();
-      
     }else{
       Swal.fire({
         title: respuesta.status,
         text: respuesta.message,
-        icon: respuesta.status ,
+        icon: respuesta.status,
      });
     }
     ocultarLoader();

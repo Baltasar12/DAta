@@ -1,6 +1,9 @@
 const { ipcRenderer } = require('electron');
 const $ = require('jquery');
+const Swal = require('sweetalert2');
 let semaforoGeneral;
+let productData;
+let credenciales;
 
 $(document).ready(function () {
 
@@ -19,6 +22,13 @@ $(document).ready(function () {
         const infoGeneral = { productData: ProductData, semaforo: semaforo }
         console.log(infoGeneral);
         ipcRenderer.send('guardar-en-archivo', infoGeneral);
+        Swal.fire({
+            title: 'Configuracion guardada con exito.',
+            text: '',
+            icon: 'success',
+         }).then(()=>{
+            window.location.href = '../../index.html';
+         });
     });
 
 
@@ -80,6 +90,18 @@ $(document).ready(function () {
         semaforoGeneral = valor;
         ReiniciarSemaforo();
         console.log(semaforoGeneral);
+    });
+
+    waitForValue('productData').then((valor) => {
+        productData = valor;
+        completarInputsDesdeJSON(productData);
+        console.log(productData);
+    });
+
+    waitForValue('credenciales').then((valor) => {
+        credenciales = valor;
+        completarInputsDesdeJSON(credenciales);
+        console.log(credenciales);
     });
 
     function GuardarValorEnSemaforo(id, seccion, valor) {
@@ -154,11 +176,27 @@ $(document).ready(function () {
         semaforoVeraz['semaforo']['th']['bueno'].push( [$('input[name="desdeScoreBuenoTh"]').val() , $('input[name="hastaScoreBuenoTh"]').val()]  );  
         semaforoVeraz['semaforo']['th']['revisar'].push( [$('input[name="desdeScoreRevisarTh"]').val() , $('input[name="hastaScoreRevisarTh"]').val()]  );  
         semaforoVeraz['semaforo']['th']['malo'].push( [$('input[name="desdeScoreMaloTh"]').val() , $('input[name="hastaScoreMaloTh"]').val()] );
-
         semaforoVeraz['semaforo']['ok']['bueno'].push( [$('input[name="desdeScoreBuenoOk"]').val() , $('input[name="hastaScoreBuenoOk"]').val()]  );
         semaforoVeraz['semaforo']['ok']['revisar'].push( [$('input[name="desdeScoreRevisarOk"]').val() , $('input[name="hastaScoreRevisarOk"]').val()]  );  
         semaforoVeraz['semaforo']['ok']['malo'].push( [$('input[name="desdeScoreMaloOk"]').val() , $('input[name="hastaScoreMaloOk"]').val()]  );
     }
+
+    function completarInputsDesdeJSON(json) {
+        // Obtén todos los elementos de entrada con atributo name
+        const inputs = document.querySelectorAll('input[name]');
+      
+        // Itera sobre cada elemento de entrada
+        inputs.forEach(input => {
+          // Obtén el nombre del atributo name del elemento
+          const nombreAtributo = input.getAttribute('name');
+      
+          // Verifica si el nombre del atributo existe en el JSON
+          if (json.hasOwnProperty(nombreAtributo)) {
+            // Establece el valor del elemento de entrada con el valor correspondiente del JSON
+            input.value = json[nombreAtributo];
+          }
+        });
+      }
 
 
 });
