@@ -299,6 +299,8 @@ a:hover, a:focus {
     /* margin-left: 14%; */
 }
 .main8{
+    display: flex;
+    flex-direction: column;
     background-color: var(--azul-osc);
     border: 1px;
     border-radius: 20px;
@@ -307,7 +309,9 @@ a:hover, a:focus {
     -webkit-box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
     -moz-box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
     line-height: 0%;
-    /* margin-left: 14%; */
+    height: 85%;
+    width: 25%;
+    margin-left: 88%;
 }
 
 
