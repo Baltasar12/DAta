@@ -623,6 +623,10 @@ $(document).ready(function () {
     $modal_container.removeClass('show');
   });
 
+  $('.btn-cerrar').on('click', ()=>{
+    const ctnModal = $(this).closest('.ctnModal');
+  })
+
   $('#submitBtn').click(async (event) => {
     mostrarLoader();
     event.preventDefault();
