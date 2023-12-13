@@ -4,7 +4,7 @@ const Swal = require('sweetalert2');
 let credenciales = null;
 let productData = null;
 let semaforo = null;
-const imgNombre = {bueno: 'controlar.png', revisar: 'excl2.png', malo:'cruz.png'};
+const imgNombre = {bueno: 'controlar.png', revisar: 'excl2.png', malo:'cruz.png', SC:'inte.png'};
 
 var jsonData = {
     "status": "APROBAR",
@@ -443,6 +443,7 @@ function mostrarDatos() {
 
 // Función para llenar las secciones del formulario con la información del JSON
 function llenarFormulario() {
+
     // Rellenar Income Predictor
     var incomePredictorContent = document.getElementById("incomePredictorContent");
     incomePredictorContent.textContent = jsonData.datosConsultado.income_predictor;
@@ -453,40 +454,45 @@ function llenarFormulario() {
   
     // Rellenar Actividad Económica en columnas sin estilos
     var actividadEconomicaContent = document.getElementById("actividadEconomicaContent");
+    actividadEconomicaContent.innerHTML = ""; // Limpiar contenido existente
+
     var actividadEconomicaList = document.createElement("ul");
     var actividadEconomica = jsonData.datosConsultado.actividad_economica;
 
     // Crear elementos li para cada propiedad de actividad económica
     for (var propiedad in actividadEconomica) {
-    if (actividadEconomica.hasOwnProperty(propiedad)) {
+        if (actividadEconomica.hasOwnProperty(propiedad)) {
         var listItem = document.createElement("li");
         listItem.textContent = propiedad + ": " + actividadEconomica[propiedad];
         actividadEconomicaList.appendChild(listItem);
-    }
+        }
     }
 
     // Agregar clase para quitar estilos predeterminados
     actividadEconomicaList.classList.add("sin-estilos");
     actividadEconomicaContent.appendChild(actividadEconomicaList);
-    
   
     // Rellenar Domicilios en columnas
-  var domiciliosContent = document.getElementById("domiciliosContent");
-  var domiciliosList = document.createElement("ul");
-  jsonData.datosConsultado.Domicilios.forEach(function (domicilio) {
+    var domiciliosContent = document.getElementById("domiciliosContent");
+    domiciliosContent.innerHTML = ""; // Limpiar contenido existente
+
+    var domiciliosList = document.createElement("ul");
+    jsonData.datosConsultado.Domicilios.forEach(function (domicilio) {
     var listItem = document.createElement("li");
     listItem.textContent = domicilio;
     domiciliosList.appendChild(listItem);
-  });
-  domiciliosContent.appendChild(domiciliosList);
+    });
+    domiciliosContent.appendChild(domiciliosList);
 
     // Rellenar Teléfonos en columnas sin estilos
     var telefonosContent = document.getElementById("telefonosContent");
+    telefonosContent.innerHTML = ""; // Limpiar contenido existente
+
     var telefonosList = document.createElement("ul");
     jsonData.datosConsultado.Telefonos.forEach(function (telefono) {
-    var listItem = document.createElement("li");
-    listItem.textContent = telefono;
-    telefonosList.appendChild(listItem);
+        var listItem = document.createElement("li");
+        listItem.textContent = telefono;
+        telefonosList.appendChild(listItem);
     });
 
     // Agregar clase para quitar estilos predeterminados
@@ -704,6 +710,7 @@ $(document).ready(function () {
       actualizarStatusBureau();
       actualizarStatusBCRA();
       cambiarIconEstado();
+      llenarFormulario()
     }else{
       Swal.fire({
         title: respuesta.status,
