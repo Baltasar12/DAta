@@ -314,7 +314,6 @@ if (obsVigBA) {
 
 var juiciosTable = document.getElementById('juiciosTable');
 var chequesTable = document.getElementById('chequesTable');
-
 // Mostrar datos en el DOM
 document.addEventListener('DOMContentLoaded', function () {
   mostrarDatos();
