@@ -752,6 +752,7 @@ $(document).ready(function () {
       actualizarStatusBureau();
       actualizarStatusBCRA();
       cambiarIconEstado();
+      llenarFormulario();
     }else{
       Swal.fire({
         title: respuesta.status,
