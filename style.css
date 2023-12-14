@@ -28,10 +28,9 @@
 body{
     display: grid;
     grid-template-areas: 
-    "nav1 nav1"
-    "main1 actual"
-    "main1 actual"
-    "cheques juicios"
+    "nav1 nav1 nav1"
+    "main1 actual dU"
+    "main1 actual dU"
     ;
     grid-template-rows: auto;
     font-family: 'Open Sans', sans-serif;
@@ -216,9 +215,9 @@ a:hover, a:focus {
 
 .main1{
     grid-area: main1;
-    width: 90%;
-    /*height: 90%;*/
-    margin-left: 10%;
+    width: 98%;
+    height: 93%;
+    margin-left: 7%;
     margin-top: 5%;
     background-color: var(--azul-osc);
     color: var(--blanco-c);
@@ -248,7 +247,14 @@ a:hover, a:focus {
 .submit-btn{
     align-self: end;
 }
-
+.detallesU{
+    grid-area: dU;
+    display: flex;
+    flex-direction: column;
+    margin-left: -8%;
+    margin-right: 20%;
+    margin-top: 5%;
+}
 
 
 
@@ -256,16 +262,17 @@ a:hover, a:focus {
     grid-area: actual;
     margin-top: 4%;
     color: var(--blanco-c);
-    margin-left: -8%;
-    margin-right: 20%;
+ /*    margin-left: -8%;
+    margin-right: 20%; */
 }
 .main2{
     width: 80%;
-    height: 35%;
+    height: 31%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 1%;
     margin-left: 10%;
     box-shadow: -4px -3px 39px 2px rgba(82,77,77,0.49);
     -webkit-box-shadow: -4px -3px 39px 2px rgba(82,77,77,0.49);
@@ -273,7 +280,7 @@ a:hover, a:focus {
 }
 .main3{
     width: 80%;
-    height: 42%;
+    height: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -296,8 +303,8 @@ a:hover, a:focus {
     justify-content: space-around;
     grid-area: cheques;
     /* width: 30%; */
-    margin-left: 70%;
-    margin-right: 0%;
+    /* margin-left: 70%; */
+    /* margin-right: 0%;*/
 }
 .main4>h1{
     color: var(--blanco-c);
@@ -310,7 +317,7 @@ a:hover, a:focus {
     justify-content: space-evenly;
     grid-area: juicios;
     /* width: 30%; */
-    margin-right: 70%;
+    /* margin-right: 70%;*/
 }
 .main5>h1{
     color: var(--blanco-c);
@@ -339,18 +346,9 @@ a:hover, a:focus {
 }
 .main8{
     display: flex;
-    flex-direction: column;
-    background-color: var(--azul-osc);
-    border: 1px;
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
-    -webkit-box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
-    -moz-box-shadow: 11px 10px 51px 2px rgba(82,77,77,0.49);
-    line-height: 0%;
-    height: 85%;
-    width: 25%;
-    margin-left: 88%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 
