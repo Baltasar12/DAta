@@ -736,30 +736,45 @@ $(document).ready(function () {
   })
 
   $('#submitBtn').click(async (event) => {
-    mostrarLoader();
     event.preventDefault();
-    const respuesta = await ConsultaVeraz();
-    if (respuesta.status == 'APROBAR' || respuesta.status == 'success') {
-      jsonData = respuesta;
-      mostrarDatos();
-      actualizarInfoUsuario();
-      actualizarStatusBureau();
-      actualizarStatusBCRA();
-      cambiarIconEstado();
-      CrearTablaConsultas();
-      llenarFormulario();
-      CrearTablaObsBa();
-      CrearTablaObsBc();
-      CrearObsBaDetalle();
-      ipcRenderer.send('guardarUltimaConsulta', jsonData);
+    if ((productData && checkConfig(productData)) && (credenciales && checkConfig(credenciales))) {
+      mostrarLoader();
+      const respuesta = await ConsultaVeraz();
+      if (respuesta.status == 'APROBAR' || respuesta.status == 'success') {
+        jsonData = respuesta;
+        mostrarDatos();
+        actualizarInfoUsuario();
+        actualizarStatusBureau();
+        actualizarStatusBCRA();
+        cambiarIconEstado();
+        CrearTablaConsultas();
+        llenarFormulario();
+        CrearTablaObsBa();
+        CrearTablaObsBc();
+        CrearObsBaDetalle();
+        ipcRenderer.send('guardarUltimaConsulta', jsonData);
+      } else {
+        Swal.fire({
+          title: respuesta.status,
+          text: respuesta.message,
+          icon: respuesta.status,
+        });
+      }
+      ocultarLoader();
     } else {
       Swal.fire({
-        title: respuesta.status,
-        text: respuesta.message,
-        icon: respuesta.status,
+        title: 'Error de configuración',
+        text: 'Faltan configuraciones importantes, configura ahora...',
+        icon: 'error',
+        showCancelButton: true,
+        confirmButtonText: 'Configurar ahora',
+        cancelButtonText: 'Aceptar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = 'secciones/configuracion/index.html';
+        }
       });
-    }
-    ocultarLoader();
+    }    
   })
 
   async function ConsultaVeraz() {
@@ -884,6 +899,15 @@ function crearDetalleOb(empresa, estado, descripciontotal) {
   detalleOb.appendChild(pDescripcionTotal);
   // Devolver el elemento div completo
   return detalleOb;
+}
+
+function checkConfig(objeto) {
+  for (const propiedad in objeto) {
+      if (propiedad != 'formatReport' && (objeto[propiedad] == undefined || objeto[propiedad] == null || objeto[propiedad] == '')) {
+          return false;
+      }
+  }
+  return true;
 }
 
 
