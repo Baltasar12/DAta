@@ -752,6 +752,10 @@ $(document).ready(function () {
       actualizarStatusBureau();
       actualizarStatusBCRA();
       cambiarIconEstado();
+      CrearTablaConsultas();
+      llenarFormulario();
+      CrearTablaObsBa();
+      CrearTablaObsBc();
     }else{
       Swal.fire({
         title: respuesta.status,
