@@ -697,15 +697,6 @@ $(document).ready(function () {
                   data: data.map(row => row.status), // Invertir los datos del eje y
                 }
               ]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  stepSize: 1, // Establecer el tamaño del paso a 1 para valores enteros
-                  precision: 0, // No mostrar decimales en el eje y
-                }
-              }
             }
           }
         );
