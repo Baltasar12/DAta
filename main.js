@@ -6,6 +6,7 @@ let mainWindow;
 let credenciales;
 let productData;
 let semaforo;
+let jsonData;
 
 app.whenReady().then(() => {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
@@ -33,6 +34,8 @@ app.whenReady().then(() => {
       credenciales = await LeerJsonDatos('config', 'credenciales.json');
       productData = await LeerJsonDatos('config', 'productData.json');
       semaforo = await LeerJsonDatos('config', 'semaforo.json');
+      jsonData = await LeerJsonDatos('config', 'ultimaConsulta.json');
+      mainWindow.webContents.send('enviarJsonData', jsonData);
       mainWindow.webContents.send('credenciales', credenciales);
       mainWindow.webContents.send('productData', productData);
       mainWindow.webContents.send('semaforo', semaforo);
@@ -80,6 +83,14 @@ ipcMain.on('guardar-en-archivo', async (event, variableRecibida) => {
     credenciales = credencialesObjeto;
     productData = ProductDataObjeto;
 
+  } catch (error) {
+    console.error('Error al guardar en el archivo:', error);
+  }
+});
+
+ipcMain.on('guardarUltimaConsulta', async (event, variableRecibida) => {
+  try {
+    await guardarDatosEnArchivos('config', 'ultimaConsulta.json', variableRecibida);
   } catch (error) {
     console.error('Error al guardar en el archivo:', error);
   }
