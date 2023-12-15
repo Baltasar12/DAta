@@ -1,12 +1,54 @@
-const { app, BrowserWindow, screen, ipcMain } = require('electron');
+const { app, BrowserWindow, screen, ipcMain, autoUpdater } = require('electron');
+const Swal = require('sweetalert2');
 const fs = require('fs').promises;
-const path = require('path'); // Corregido el import de 'node:path'
+const path = require('path');
+autoUpdater.autoDownload = true;
 
 let mainWindow;
 let credenciales;
 let productData;
 let semaforo;
 let jsonData;
+
+const showUpdatingNotification = () => {
+  Swal.fire({
+    title: 'Actualizando',
+    text: 'La aplicación se está actualizando. Por favor, espera...',
+    icon: 'info',
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 5000
+  });
+};
+
+const showNewUpdateNotification = () => {
+  Swal.fire({
+    title: '¡Nueva Actualización!',
+    text: 'Hay una nueva versión disponible. La aplicación se actualizará automáticamente.',
+    icon: 'info',
+    showCancelButton: false,
+    showConfirmButton: false,
+    timer: 5000
+  });
+};
+
+autoUpdater.setFeedURL({
+  url: 'https://github.com/Baltasar12/DAta/releases'
+});
+
+autoUpdater.on('update-available', () => {
+  showNewUpdateNotification();
+});
+
+autoUpdater.on('update-downloaded', () => {
+  showUpdatingNotification();
+  autoUpdater.quitAndInstall();
+});
+
+autoUpdater.on('error', (error) => {
+  console.error('Error durante la actualización:', error);
+});
 
 app.whenReady().then(() => {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
@@ -47,7 +89,7 @@ app.whenReady().then(() => {
 
 app.on('activate', () => {
   if (mainWindow === null) {
-    createWindow(); // No se define la función 'createWindow', posiblemente deberías agregarla si es necesaria.
+    createWindow(); // ¿Necesitas realmente esta función?
   }
 });
 
@@ -72,12 +114,10 @@ ipcMain.on('guardar-en-archivo', async (event, variableRecibida) => {
     const { clientId, clientSecret, ...ProductDataObjeto } = variableRecibida.productData;
     const { sector, billTo, shipTo, formatReport, producto, productName, productOrch, configuration, customer, model, ...credencialesObjeto } = variableRecibida.productData;
 
-
     await guardarDatosEnArchivos('config', 'productData.json', ProductDataObjeto);
     await guardarDatosEnArchivos('config', 'credenciales.json', credencialesObjeto);
     await guardarDatosEnArchivos('config', 'semaforo.json', variableRecibida.semaforo);
 
-    // Envía los eventos después de guardar en los archivos
     mainWindow.webContents.send('credenciales', credencialesObjeto);
     mainWindow.webContents.send('productData', ProductDataObjeto);
     credenciales = credencialesObjeto;
@@ -101,11 +141,9 @@ async function guardarDatosEnArchivos(ruta, nombreArchivo, DatoGuardar) {
   const folderPath = path.join(projectFolderPath, ruta);
 
   try {
-    // Asegúrate de que el directorio exista antes de escribir en el archivo
     await fs.mkdir(folderPath, { recursive: true });
     const filePath = path.join(folderPath, nombreArchivo);
 
-    // Guarda la variable en el archivo JSON
     await fs.writeFile(filePath, JSON.stringify(DatoGuardar));
   } catch (err) {
     console.error('Error al guardar en el archivo:', err);
@@ -113,13 +151,12 @@ async function guardarDatosEnArchivos(ruta, nombreArchivo, DatoGuardar) {
 }
 
 async function LeerJsonDatos(rutaArchivo, archivo) {
-  const projectFolderPath = app.getAppPath(); // Obtiene la ubicación del proyecto
+  const projectFolderPath = app.getAppPath();
   const folderPath = path.join(projectFolderPath, rutaArchivo);
-  const filePath = path.join(folderPath, archivo); // Ruta del archivo JSON
+  const filePath = path.join(folderPath, archivo);
 
   try {
     const data = await fs.readFile(filePath, 'utf8');
-    // Parsea el contenido del archivo JSON en un objeto JavaScript
     const parsedDataJson = JSON.parse(data);
     return parsedDataJson;
   } catch (err) {
