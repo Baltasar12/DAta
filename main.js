@@ -50,6 +50,7 @@ autoUpdater.on('error', (error) => {
   console.error('Error durante la actualización:', error);
 });
 
+
 app.whenReady().then(() => {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 

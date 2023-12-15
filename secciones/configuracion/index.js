@@ -24,7 +24,7 @@ $(document).ready(function () {
         ipcRenderer.send('guardar-en-archivo', infoGeneral);
         Swal.fire({
             title: 'Configuracion guardada con exito.',
-            text: '',
+            text: 'La app se reiniciara al aceptar este aviso...',
             icon: 'success',
          }).then(()=>{
             window.location.href = '../../index.html';
