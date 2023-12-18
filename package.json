@@ -1,11 +1,12 @@
 {
   "name": "data",
   "version": "1.0.0",
-  "description": "Ver estadisticas de los usuarios morosos",
+  "description": "Ver estadísticas de los usuarios morosos",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "package": "electron-builder build"
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,44 @@
   },
   "homepage": "https://github.com/Baltasar12/DAta#readme",
   "devDependencies": {
-    "electron": "^27.0.4"
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "electron-updater": "^6.1.7"
   },
   "dependencies": {
     "jquery": "^3.7.1",
     "sweetalert2": "^11.10.1"
+  },
+  "build": {
+    "appId": "consultas.veraz.yourapp",
+    "productName": "Consultas Veraz",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Baltasar12",
+        "repo": "DAta",
+        "private": false,
+        "channel": "latest"
+      }
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "squirrelWindows": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   }
 }
