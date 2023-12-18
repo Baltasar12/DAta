@@ -293,7 +293,13 @@ a:hover, a:focus {
     flex-direction: row;
     gap: 10px; /* Espacio entre botones */
 }
-
+.dO{
+    width: 80%; 
+    margin-left: 10%; 
+    display: flex; 
+    justify-content: space-evenly;
+    flex-direction: row;
+}
 
 .main4{
     display: flex;
@@ -708,19 +714,124 @@ select {
 
 @media (max-width: 767px) {
     /* Estilos para dispositivos pequeños (móviles) */
+    body{
+        grid-template-areas: 
+        "nav1 nav1 nav1"
+        "main1 main1 main1"
+        "actual actual actual"
+        "dU dU dU"
+        ;
+        grid-template-rows: auto;
+    }
+
+    .main1 {
+        margin-left: 1%;
+    }
+    .main2 {
+        width: auto; 
+        margin-left: 1%;
+    }
+    .main3 {
+        width: auto;
+        margin-left: 1%;
+    }
+    .dO{
+        width: auto;
+        margin-left: 0;
+    }
+    .detallesU {
+        margin: 2%;
+    }
+    .modal2 {
+        width: 95%;
+    }
+    .modal3 {
+        width: 95%;
+    }
+    .modal4 {
+        width: 95%;
+    }
 }
 
 
 @media (min-width: 768px) and (max-width: 1023px) {
     /* Estilos para tabletas y dispositivos medianos */
+    body{
+        grid-template-areas: 
+        "nav1 nav1 nav1"
+        "main1 main1 dU"
+        "main1 main1 dU"
+        "actual actual actual"
+        ;
+        grid-template-rows: auto;
+    }
+    .main1 {
+        width: 110%;
+        height: 95%;
+        margin-left: 2%;
+    }
+    .section-actual {
+        margin-top: 1%;
+    }
+    .detallesU {
+        margin-left: 20%;
+        margin-right: 2%;
+    }
+    .modal2{
+        width: 60%;
+    }
+    .modal3{
+        width: 60%;
+    }
+    .modal4{
+        width: 60%;
+    }
 }
 
 
 @media (min-width: 1024px) and (max-width: 1279px) {
     /* Estilos para dispositivos grandes (laptops y pantallas de escritorio) */
+    body{
+        grid-template-areas: 
+        "nav1 nav1 nav1"
+        "main1 main1 dU"
+        "main1 main1 dU"
+        "actual actual actual"
+        ;
+        grid-template-rows: auto;
+    }
+    .main1 {
+        width: 110%;
+        height: 95%;
+        margin-left: 2%;
+    }
+    .section-actual {
+        margin-top: 1%;
+    }
+    .detallesU {
+        margin-left: 20%;
+        margin-right: 2%;
+    }
+    .modal2{
+        width: 60%;
+    }
+    .modal3{
+        width: 60%;
+    }
+    .modal4{
+        width: 60%;
+    }
 }
 
 
 @media (min-width: 1280px) {
     /* Estilos para pantallas extra grandes */
+    body{
+        grid-template-areas: 
+        "nav1 nav1 nav1"
+        "main1 actual dU"
+        "main1 actual dU"
+        ;
+        grid-template-rows: auto;
+    }
 }
