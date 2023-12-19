@@ -69,7 +69,7 @@ nav {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     color: white;
     font-size: 16px;
-    background: var(--azul-osc);
+    background: var(--gris-op);
 }
 nav.mask {
     top: 150px;
@@ -215,7 +215,7 @@ a:hover, a:focus {
    }
 }
 .section-main{
-    background-color: var(--azul-osc);
+    background-color: var(--gris-op);
     border: 1px ;
     border-radius: 20px;
     padding: 15px;
@@ -233,7 +233,6 @@ a:hover, a:focus {
     height: 93%;
     margin-left: 7%;
     margin-top: 5%;
-    background-color: var(--azul-osc);
     color: var(--blanco-c);
 }
 .dato-u{
@@ -343,7 +342,7 @@ a:hover, a:focus {
     color: var(--blanco-c);
 }
 .main6{
-    background-color: var(--azul-osc);
+    background-color: var(--gris-op);
     border: 1px;
     border-radius: 20px;
     padding: 15px;
@@ -354,7 +353,7 @@ a:hover, a:focus {
 }
 
 .main7{
-    background-color: var(--azul-osc);
+    background-color: var(--gris-op);
     border: 1px;
     border-radius: 20px;
     padding: 15px;
@@ -377,7 +376,7 @@ a:hover, a:focus {
 
 /*--BUTTON--*/
 .button-80 {
-    background: var(--negro);
+    background: var(--naranja);
     backface-visibility: hidden;
     border-radius: 12px;
     border-style: solid;
@@ -543,7 +542,7 @@ select {
     width: 17rem;
     padding: 0.3rem 4rem 0.3rem 1rem;
     background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em, linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
-    color: black;
+    color: var(--blanco-c);
     border-radius: 0.25em;
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
@@ -556,7 +555,7 @@ select {
 }
  select option {
 	 color: inherit;
-	 background-color: var(--option-bg);
+	 background-color: var(--gris-op);
 }
 
 /*----POPUP----*/  
