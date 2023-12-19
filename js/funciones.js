@@ -570,7 +570,7 @@ function actualizarStatusBCRA() {
   if (totalBCRAElemento) {
     // Puedes actualizar el contenido con datos específicos según tu estructura de datos
     // En este ejemplo, asumimos que hay un monto en el primer detalle
-    totalBCRAElemento.textContent = 'Total BCRA: $' + (statusBCRAConsulta.detalles[0].monto || 'Desconocido');
+    totalBCRAElemento.textContent = 'Total BCRA: $' + (statusBCRAConsulta.detalles[4].monto || 'Desconocido');
   }
 
   if (situacionBCRAElemento) {

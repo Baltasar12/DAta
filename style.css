@@ -230,7 +230,6 @@ a:hover, a:focus {
 .main1{
     grid-area: main1;
     width: 98%;
-    height: 93%;
     margin-left: 7%;
     margin-top: 5%;
     color: var(--blanco-c);
@@ -780,7 +779,6 @@ select {
     }
     .main1 {
         width: 110%;
-        height: 95%;
         margin-left: 2%;
     }
     .section-actual {
@@ -815,7 +813,6 @@ select {
     }
     .main1 {
         width: 110%;
-        height: 95%;
         margin-left: 2%;
     }
     .section-actual {
