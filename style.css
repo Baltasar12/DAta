@@ -1,22 +1,36 @@
 :root{
-    --negro: #2C3333;
+    
     --azul: #395B64;
     --azul-c: #A5C9CA;
-    --blanco: #E7F6F2;
-
     --azul-suave:#5077A2;
-    --gris-n:#EDEDED;
-    --verde-o:#73944D;
+    --azul-osc: #324960;
+
+
+    --blanco: #E7F6F2;
     --blanco-c:#FFFFFF;
+    --negro: #2C3333;
+    --gris-n:#EDEDED;
+    
+    
+    --azul-f:#0066CC;
+    --azul-o-i:#001F3F;
+    --gris-op:#222222;
+
+
+
+    --naranja:#FF5733;
+    --turq:#008080;
+    --amrillod:#FFD700;
+    --verded:#3CB371;
+
 
 
     --rojo:#FF605C;
     --amarillo:#FFBD44;
     --verde:#00CA4E;
 
-    --azul-osc: #324960;
 
-
+    --verde-o:#73944D;
     --arrow-bg: rgba(255, 255, 255, 0.3);
     --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
     --option-bg: white;
