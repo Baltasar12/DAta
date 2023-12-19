@@ -53,7 +53,6 @@ autoUpdater.on('error', (error) => {
 
 app.whenReady().then(() => {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-
   mainWindow = new BrowserWindow({
     width,
     height,
@@ -68,7 +67,6 @@ app.whenReady().then(() => {
   });
 
   mainWindow.loadFile('index.html');
-
   mainWindow.on('closed', () => {
     mainWindow = null;
   });

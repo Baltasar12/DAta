@@ -36,15 +36,15 @@
         "owner": "Baltasar12",
         "repo": "DAta",
         "private": false,
-        "channel": "latest"
+        "channel": "latest",
+        "releaseType": "release"
       }
     ],
     "directories": {
       "output": "dist"
     },
     "win": {
-      "target": "nsis",
-      "squirrelWindows": false
+      "target": "nsis"
     },
     "nsis": {
       "oneClick": false,
