@@ -64,6 +64,7 @@ app.whenReady().then(() => {
       contextIsolation: false,
       webSecurity: false,
     },
+    autoHideMenuBar: true
   });
 
   mainWindow.loadFile('index.html');
