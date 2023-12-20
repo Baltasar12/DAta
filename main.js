@@ -2,6 +2,8 @@ const { app, BrowserWindow, screen, ipcMain, autoUpdater } = require('electron')
 const Swal = require('sweetalert2');
 const fs = require('fs').promises;
 const path = require('path');
+const Store = require('electron-store');
+const store = new Store();
 autoUpdater.autoDownload = true;
 
 let mainWindow;
@@ -73,10 +75,10 @@ app.whenReady().then(() => {
 
   mainWindow.webContents.on('did-finish-load', async () => {
     try {
-      credenciales = await LeerJsonDatos('config', 'credenciales.json');
-      productData = await LeerJsonDatos('config', 'productData.json');
-      semaforo = await LeerJsonDatos('config', 'semaforo.json');
-      jsonData = await LeerJsonDatos('config', 'ultimaConsulta.json');
+      credenciales =await DarValorConfig('credenciales');
+      productData =await DarValorConfig('productData');
+      semaforo =await DarValorConfig('semaforo');
+      jsonData =await DarValorConfig('ultimaConsulta');
       mainWindow.webContents.send('enviarJsonData', jsonData);
       mainWindow.webContents.send('credenciales', credenciales);
       mainWindow.webContents.send('productData', productData);
@@ -100,9 +102,9 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on('solicitarConfig', async () => {
-  const credencialesObjeto = await LeerJsonDatos('config', 'credenciales.json');
-  const ProductDataObjeto = await LeerJsonDatos('config', 'productData.json');
-  const semaforoGeneral = await LeerJsonDatos('config', 'semaforo.json');
+  const credencialesObjeto =await DarValorConfig('credenciales');
+  const ProductDataObjeto =await DarValorConfig('productData');
+  const semaforoGeneral =await DarValorConfig('semaforo');
 
   mainWindow.webContents.send('credenciales', credencialesObjeto);
   mainWindow.webContents.send('productData', ProductDataObjeto);
@@ -117,11 +119,14 @@ ipcMain.on('guardar-en-archivo', async (event, variableRecibida) => {
     await guardarDatosEnArchivos('config', 'productData.json', ProductDataObjeto);
     await guardarDatosEnArchivos('config', 'credenciales.json', credencialesObjeto);
     await guardarDatosEnArchivos('config', 'semaforo.json', variableRecibida.semaforo);
-
+    store.set('semaforo', variableRecibida.semaforo);
+    store.set('credenciales', credencialesObjeto);
+    store.set('productData', ProductDataObjeto);
     mainWindow.webContents.send('credenciales', credencialesObjeto);
     mainWindow.webContents.send('productData', ProductDataObjeto);
     credenciales = credencialesObjeto;
     productData = ProductDataObjeto;
+    semaforo = variableRecibida.semaforo;
 
   } catch (error) {
     console.error('Error al guardar en el archivo:', error);
@@ -131,6 +136,7 @@ ipcMain.on('guardar-en-archivo', async (event, variableRecibida) => {
 ipcMain.on('guardarUltimaConsulta', async (event, variableRecibida) => {
   try {
     await guardarDatosEnArchivos('config', 'ultimaConsulta.json', variableRecibida);
+    store.set('ultimaConsulta', variableRecibida);
   } catch (error) {
     console.error('Error al guardar en el archivo:', error);
   }
@@ -147,6 +153,14 @@ async function guardarDatosEnArchivos(ruta, nombreArchivo, DatoGuardar) {
     await fs.writeFile(filePath, JSON.stringify(DatoGuardar));
   } catch (err) {
     console.error('Error al guardar en el archivo:', err);
+  }
+}
+
+async function DarValorConfig(nombreConfig) {
+  if (store.has(nombreConfig)) {
+    return store.get(nombreConfig);
+  }else{
+    return await LeerJsonDatos('config', nombreConfig+'.json');
   }
 }
 
